@@ -1,0 +1,83 @@
+/* NotFound.css */
+
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    text-align: center;
+    background-color: #f0f2f5; /* Light grey background */
+    color: #333; /* Dark grey text */
+    font-family: Arial, sans-serif; /* Example font */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.not-found-content {
+    max-width: 600px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.not-found-image {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.not-found-heading {
+    font-size: 3em;
+    color: #e74c3c; /* Red for error */
+    margin-bottom: 20px;
+}
+
+.not-found-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.not-found-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #3498db; /* Blue button */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.not-found-button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .not-found-heading {
+        font-size: 2.5em;
+    }
+    .not-found-text {
+        font-size: 1em;
+    }
+    .not-found-content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .not-found-heading {
+        font-size: 2em;
+    }
+    .not-found-content {
+        padding: 20px;
+    }
+    .not-found-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}

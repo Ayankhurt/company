@@ -1,0 +1,365 @@
+:root {
+    --_colors---primary--p500: #191919;
+    --heading-1--font-family: "Funnel Display", sans-serif;
+    --heading-1--font-size: 128px;
+    --heading-1--line-height: 1.24em;
+    --heading-1--font-weight: 800;
+    --heading-1--letter-spacing: -0.02em;
+    --heading-2--font-family: "Funnel Display", sans-serif;
+    --heading-2--font-size: 48px; /* Used for the large name at bottom */
+    --heading-2--line-height: 1.24em;
+    --heading-2--font-weight: 700;
+    --heading-2--letter-spacing: -0.02em;
+    --heading-3--font-family: "Funnel Display", sans-serif;
+    --heading-3--font-size: 36px;
+    --heading-3--line-height: 1.28em;
+    --heading-3--font-weight: 700;
+    --heading-3--letter-spacing: -0.02em;
+    --heading-4--font-family: "Funnel Display", sans-serif;
+    --heading-4--font-size: 28px; /* Used for the title at bottom */
+    --heading-4--line-height: 1.32em;
+    --heading-4--font-weight: 700;
+    --heading-4--letter-spacing: -0.02em;
+    --heading-5--font-family: "Funnel Display", sans-serif;
+    --heading-5--font-size: 24px;
+    --heading-5--line-height: 1.36em;
+    --heading-5--font-weight: 600;
+    --heading-5--letter-spacing: -0.02em;
+    --heading-6--font-family: "Funnel Display", sans-serif;
+    --heading-6--font-size: 20px;
+    --heading-6--line-height: 1.4em;
+    --heading-6--font-weight: 500;
+    --heading-6--letter-spacing: -0.02em;
+    --_colors---neutral--n600: #757575;
+    --heading-7--font-family: "Funnel Display", sans-serif;
+    --heading-7--font-size: 18px;
+    --heading-7--line-height: 1.44em;
+    --heading-7--font-weight: 500;
+    --heading-7--letter-spacing: -0.02em;
+    --body-text-1--font-family: "Rethink Sans", sans-serif;
+    --body-text-1--font-size: 16px;
+    --body-text-1--line-height: 1.5em;
+    --body-text-1--font-weight: 400;
+    --body-text-1--letter-spacing: -0.03em;
+    --button-1--font-family: "Rethink Sans", sans-serif;
+    --button-1--font-size: 20px;
+    --button-1--line-height: 1.2em;
+    --button-1--font-weight: 500;
+    --button-1--letter-spacing: -0.02em;
+    --button-2--font-family: "Rethink Sans", sans-serif;
+    --button-2--font-size: 16px;
+    --button-2--line-height: 1.2em;
+    --button-2--font-weight: 500;
+    --button-2--letter-spacing: -0.02em;
+    --button-3--font-family: "Rethink Sans", sans-serif;
+    --button-3--font-size: 14px;
+    --button-3--line-height: 1.2em;
+    --button-3--font-weight: 500;
+    --button-3--letter-spacing: -0.02em;
+    --font-weights--bold: 700;
+    --font-weights--extra-bold: 800;
+    --_colors---neutral--n100: white;
+    --_colors---neutral--n500: #9e9e9e;
+    --_colors---neutral--n400: #bdbdbd;
+    --_colors---neutral--n700: #616161;
+    --_colors---primary--p100: #f2f2f2;
+    --line-heights--100: 1em;
+    --special-text--font-family: "Funnel Display", sans-serif;
+    --special-text--font-size: 140px; /* For the large 01, 02 etc. */
+    --special-text--line-height: 0.9em;
+    --special-text--font-weight: 800;
+    --special-text--letter-spacing: -0.02em;
+    --font-families--heading: "Funnel Display", sans-serif;
+    --font-families--body: "Rethink Sans", sans-serif;
+    --_colors---accent--a100: #f6feeb;
+    --_colors---accent--a200: #ecfed8;
+    --_colors---accent--a300: #defdc4;
+    --_colors---accent--a400: #d0fcb5;
+    --_colors---accent--a600: #8cd772;
+    --_colors---accent--a700: #62b44f;
+    --_colors---accent--a800: #3d9132;
+    --_colors---accent--a500: #bbfb9d;
+    --_colors---primary--p200: #e6e6e6;
+    --_colors---primary--p300: #b5b5b5;
+    --_colors---primary--p400: #6c6c6c;
+    --_colors---accent--a900: #23781e;
+    --_colors---neutral--n200: #f1f1f1;
+    --_colors---neutral--n300: #dfdfdf;
+    --_colors---neutral--n800: #444;
+    --_colors---neutral--n900: #212121;
+    --_colors---alerts-success--s100: #cdfdd4;
+    --_colors---alerts-success--s200: #9cfcb4;
+    --_colors---alerts-success--s300: #6af89c;
+    --_colors---alerts-success--s400: #45f293;
+    --_colors---alerts-success--s500: #0bea86;
+    --_colors---alerts-success--s600: #08c985;
+    --_colors---alerts-success--s700: #05a87f;
+    --_colors---alerts-success--s800: #038774;
+    --_colors---alerts-success--s900: #02706a;
+    --_colors---alerts-error--e100: #ffeada;
+    --_colors---alerts-error--e200: #ffd0b6;
+    --_colors---alerts-error--e300: #ffb091;
+    --_colors---alerts-error--e400: #ff9176;
+    --_colors---alerts-error--e500: #ff5f49;
+    --_colors---alerts-error--e600: #db3c35;
+    --_colors---alerts-error--e700: #b7242a;
+    --_colors---alerts-error--e800: #931725;
+    --_colors---alerts-error--e900: #7a0e23;
+    --_colors---alerts-warning--w100: #fffcd9;
+    --_colors---alerts-warning--w200: #fff8b4;
+    --_colors---alerts-warning--w300: #fff38e;
+    --_colors---alerts-warning--w400: #ffee72;
+    --_colors---alerts-warning--w500: #ffe644;
+    --_colors---alerts-warning--w600: #dbc231;
+    --_colors---alerts-warning--w700: #b79f22;
+    --_colors---alerts-warning--w800: #937d15;
+    --_colors---alerts-warning--w900: #7a650d;
+    --font-weights--thin: 100;
+    --font-weights--extra-light: 200;
+    --font-weights--light: 300;
+    --font-weights--normal: 400;
+    --font-weights--medium: 500;
+    --font-weights--semi-bold: 600;
+    --font-weights--black: 900;
+    --_colors---alerts-info--i100: #d2ebfe;
+    --font-sizes--8px: 8px;
+    --font-sizes--10px: 10px;
+    --_colors---alerts-info--i200: #a6d4fe;
+    --font-sizes--12px: 12px;
+    --_colors---alerts-info--i300: #79b8fc;
+    --font-sizes--14px: 14px;
+    --font-sizes--16px: 16px;
+    --font-sizes--18px: 18px;
+    --font-sizes--20px: 20px;
+    --font-sizes--24px: 24px;
+    --font-sizes--28px: 28px;
+    --font-sizes--36px: 36px;
+    --font-sizes--48px: 48px;
+    --font-sizes--64px: 64px;
+    --font-sizes--128px: 128px;
+    --font-sizes--140px: 140px;
+    --line-heights--auto: 1.2em;
+    --line-heights--90: 0.9em;
+    --line-heights--124: 1.24em;
+    --line-heights--128: 1.28em;
+    --line-heights--132: 1.32em;
+    --line-heights--136: 1.36em;
+    --line-heights--140: 1.4em;
+    --line-heights--144: 1.44em;
+    --line-heights--150: 1.5em;
+    --letter-spacings--3: -0.03em;
+    --letter-spacings--2: -0.02em;
+    --_colors---alerts-info--i400: #589ffa;
+    --_colors---alerts-info--i500: #2277f7;
+    --_colors---alerts-info--i600: #185cd4;
+    --_colors---alerts-info--i700: #1144b1;
+    --_colors---alerts-info--i800: #0a2f8f;
+    --_colors---alerts-info--i900: #062176;
+    --body-text-2--font-family: "Rethink Sans", sans-serif;
+    --body-text-2--font-weight: 400;
+    --body-text-2--font-size: 14px;
+    --body-text-2--line-height: 1.5em;
+    --body-text-2--letter-spacing: -0.03em;
+    --button-4--font-family: "Rethink Sans", sans-serif;
+    --button-4--font-weight: 500;
+    --button-4--font-size: 12px;
+    --button-4--line-height: 1.2em;
+    --button-4--letter-spacing: -0.02em;
+}
+
+.section_testimonials {
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+}
+
+.testimonials_content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    background-color: var(--_colors---primary--p100);
+}
+
+.testimonials_left.padding-global {
+    padding-left: 80px;
+    padding-right: 40px;
+}
+
+.padding-global {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.testimonials_left {
+    z-index: 1;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    background-color: var(--_colors---primary--p100);
+    flex-flow: column;
+    justify-content: space-between;
+    width: 42%;
+    height: 100vh;
+    padding-top: 150px; /* Keep this adjusted as per previous discussion */
+    padding-bottom: 40px;
+    display: flex;
+    position: relative;
+}
+
+.testimonials_top {
+    justify-content: space-between;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding-right: 20px;
+}
+
+/* Left Column - 01 Drew Norman list */
+.testimonials_links {
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+    flex-flow: column;
+    display: flex;
+    overflow: hidden;
+    height: 250px;
+    flex-shrink: 0;
+    margin-right: 50px;
+}
+
+.testimonial_button {
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    color: var(--_colors---neutral--n500);
+    align-items: center;
+    display: flex;
+    white-space: nowrap;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+}
+
+.testimonial_button.is-active {
+    color: var(--_colors---primary--p500);
+}
+
+.button-style-b3 {
+    font-family: var(--button-3--font-family);
+    font-size: var(--button-3--font-size);
+    line-height: var(--button-3--line-height);
+    font-weight: var(--button-3--font-weight);
+    letter-spacing: var(--button-3--letter-spacing);
+}
+
+/* Middle-Right - Large scrolling numbers */
+.special-text-number-block {
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+    text-align: center;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.special-text-number {
+    font-family: var(--special-text--font-family);
+    font-size: var(--special-text--font-size);
+    line-height: var(--special-text--line-height);
+    font-weight: var(--special-text--font-weight);
+    letter-spacing: var(--special-text--letter-spacing);
+    will-change: transform;
+    color: var(--_colors---primary--p500);
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bottom-Right - Static Name and Title */
+.testimony_current_info {
+    margin-left: auto;
+}
+
+.testimony_current_info .heading-style-h2 {
+    font-family: var(--heading-2--font-family);
+    font-size: var(--heading-2--font-size);
+    line-height: var(--heading-2--line-height);
+    font-weight: var(--heading-2--font-weight);
+    letter-spacing: var(--heading-2--letter-spacing);
+    color: var(--_colors---primary--p500);
+    margin-bottom: 10px;
+}
+
+.testimony_current_info .heading-style-h4 {
+    font-family: var(--heading-4--font-family);
+    font-size: var(--heading-4--font-size);
+    line-height: var(--heading-4--line-height);
+    font-weight: var(--heading-4--font-weight);
+    letter-spacing: var(--heading-4--letter-spacing);
+}
+
+.text-color-n500 {
+    color: var(--_colors---neutral--n500);
+}
+
+.testimony_swipe {
+    text-align: center;
+    display: none;
+}
+
+.heading-style-h6 {
+    font-family: var(--heading-6--font-family);
+    font-size: var(--heading-6--font-size);
+    line-height: var(--heading-6--line-height);
+    font-weight: var(--heading-6--font-weight);
+    letter-spacing: var(--heading-6--letter-spacing);
+    color: var(--_colors---primary--p500);
+}
+
+/* New CSS for the Right Section (Image) */
+.testimonials_right {
+    flex: 1; /* Take remaining space */
+    position: relative;
+    overflow: hidden; /* Hide overflowing images */
+    display: flex;
+    /* justify-content: center; /* Remove this - let the image-block control positioning */
+    /* align-items: center; /* Remove this */
+}
+
+/* ... (aapka maujooda Testimonials.css) ... */
+
+.testimonials_image-block {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* Yahan se 'overflow: hidden;' hata dein agar maujood ho, ya ensure karein ki horizontal scroll allowed ho */
+    /* overflow-x: hidden; */ /* Agar aap chahte hain ki yeh contained rahe, lekin GSAP position handle karega */
+    /* overflow-y: hidden; */
+}
+
+.testimonial_image_wrapper {
+    flex-shrink: 0; /* Bohat zaroori: Images ko shrink hone se rokta hai */
+    width: 100%; /* Har image wrapper viewable area ka 100% leta hai */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Agar GSAP directly xPercent par transition handle nahi kar raha, toh yahan transition add kar sakte hain */
+    /* transition: transform 0.5s ease-out; */
+}
+
+.testimonial_image {
+    max-width: 100%;
+    max-height: 60%;
+    object-fit: contain; /* Ya 'cover' aapki pasand ke hisaab se */
+}
+
+/* ... (aapka baaki Testimonials.css jaisa hai waisa hi rahega) ... */
+
+/* Ensure only the first image is visible initially if you're not using GSAP for opacity */
+/* If you want to show only the first image initially without GSAP handling */
+/* .testimonial_image_wrapper:not(._1) {
+    display: none;
+} */

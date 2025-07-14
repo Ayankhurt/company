@@ -1,0 +1,242 @@
+/* Import fonts if not already imported globally */
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap');
+/* Assuming "Funnel Display" is a custom font, you'd need to ensure it's loaded.
+   If it's from Google Fonts, replace with the correct URL. */
+/* @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@700;800&display=swap'); */
+
+
+:root {
+    /* Colors from your existing root variables */
+    --_colors---primary--p500: #191919;
+    --_colors---neutral--n100: white;
+    --_colors---neutral--n500: #9e9e9e; /* For the lighter text */
+
+    /* Font families */
+    --font-families--heading: "Funnel Display", sans-serif;
+    --font-families--body: "Rethink Sans", sans-serif;
+
+    /* Font sizes and weights (from your existing root variables) */
+    --heading-1--font-size: 128px;
+    --heading-1--line-height: 1.24em;
+    --heading-1--font-weight: 800;
+    --heading-1--letter-spacing: -0.02em;
+
+    --heading-6--font-size: 20px;
+    --heading-6--line-height: 1.4em;
+    --heading-6--font-weight: 500;
+    --heading-6--letter-spacing: -0.02em;
+
+    --button-1--font-family: var(--font-families--body);
+    --button-1--font-size: 20px;
+    --button-1--line-height: 1.2em;
+    --button-1--font-weight: 500;
+    --button-1--letter-spacing: -0.02em;
+
+    /* Add other root variables from your Testimonials.css if they are not global */
+    /* Example: */
+    /* --font-sizes--14px: 14px; */
+    /* --font-weights--bold: 700; */
+    /* etc. */
+}
+
+/* ... (your existing root variables) ... */
+
+/* General Layout */
+.section_cta {
+    background-color: var(--_colors---primary--p500); /* Dark background */
+    color: var(--_colors---neutral--n100); /* White text color */
+    height: 100%; /* Full viewport height */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    position: relative; /* For background image positioning */
+    overflow: hidden; /* Hide any overflow from background image */
+}
+
+/* Background Image (if any, as seen in the promptcrafted site) */
+.section_cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/bg4.png'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2; /* Adjust opacity to make text readable */
+    z-index: 0;
+}
+
+
+.container {
+    max-width: 1200px; /* Adjust container width as needed */
+    margin: 0 auto; /* Center the container */
+    padding: 0 40px; /* Global padding, adjust if needed */
+    position: relative; /* Ensure content is above background */
+    z-index: 1;
+}
+
+.cta_content {
+    display: flex;
+    /* Changed to row to place title left and action right */
+    flex-direction: row;
+    /* Align items to the start vertically within the row */
+    align-items: flex-start;
+    /* Space between the two columns */
+    justify-content: space-between;
+    width: 100%; /* Ensure it takes full width of container */
+}
+
+.cta_title {
+    /* Set initial opacity to 0 for animation */
+    opacity: 0;
+    /* Allow it to take up available space, but not too much */
+    flex: 1;
+    max-width: 60%; /* Adjust as needed */
+}
+
+.heading-style-h1-contact {
+    font-family: var(--font-families--heading);
+    font-size: var(--heading-1--font-size);
+    line-height: var(--heading-1--line-height);
+    font-weight: var(--heading-1--font-weight);
+    letter-spacing: var(--heading-1--letter-spacing);
+    color: var(--_colors---neutral--n100); /* White color */
+    text-align: left; /* Align to left */
+    /* Removed max-width here as it's on cta_title now */
+}
+
+.cta_action {
+    /* Set initial opacity to 0 for animation */
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    /* Align text and button to the right within its column */
+    align-items: flex-end;
+    gap: 30px; /* Space between cta-text and button */
+    flex: 1;
+    max-width: 40%; /* Adjust as needed */
+    text-align: right; /* Align text to the right */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.cta-text {
+    font-family: var(--font-families--heading); /* Use heading font for this text */
+    font-size: var(--heading-6--font-size);
+    line-height: var(--heading-6--line-height);
+    font-weight: var(--heading-6--font-weight);
+    letter-spacing: var(--heading-6--letter-spacing);
+    color: var(--_colors---neutral--n500);
+    text-align: left;
+    max-width: 250px; /* Limit width for this text block */
+}
+
+/* CTA Button Styling */
+.cta_button {
+    text-decoration: none; /* Remove underline from link */
+    color: var(--_colors---neutral--n100); /* White text for button */
+    position: relative;
+    display: inline-block; /* Allows width/height and positioning */
+    padding-bottom: 8px; /* Space for the line below */
+}
+
+.button-style-b1 {
+    font-family: var(--button-1--font-family);
+    font-size: var(--button-1--font-size);
+    line-height: var(--button-1--line-height);
+    font-weight: var(--button-1--font-weight);
+    letter-spacing: var(--button-1--letter-spacing);
+    display: flex; /* To align content and line */
+    flex-direction: column;
+    /* Changed to align items to the end for right alignment */
+    align-items: flex-end;
+}
+
+.button_content {
+    display: flex;
+    align-items: center;
+    gap: 150px; /* Space between "Let's Talk" and arrow */
+    padding-right: 5px; /* Small padding for arrow */
+}
+
+.button_arrow {
+    width: 16px; /* Adjust arrow size */
+    height: 16px;
+    filter: invert(100%); /* Make arrow white if it's black SVG */
+    transition: transform 0.3s ease; /* Smooth transition for hover */
+}
+.button_line {
+    width: 100%; /* Line spans full width of button text */
+    height: 2px; /* Thickness of the line */
+    stroke: var(--_colors---neutral--n100); /* Directly set stroke to white */
+    stroke-width: 2;
+    opacity: 0.2; /* Default opacity for the faded line */
+    transition: opacity 0.3s ease; /* Smooth transition for hover */
+}
+/* .button_line:hover{
+    color: white;
+} */
+/* Hover effects for the button */
+.cta_button:hover .button_arrow {
+    transform: translateX(5px); /* Move arrow slightly on hover */
+}
+
+.cta_button:hover .button_line {
+    opacity: 1; /* Make line fully visible on hover */
+}
+
+/* Global padding (from your Testimonials.css) - ensure this is consistent */
+.padding-global-1 {
+    padding: 272px 40px 100px 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) { /* Adjusted breakpoint for better tablet view */
+    .cta_content {
+        flex-direction: column; /* Stack columns on smaller screens */
+        align-items: center; /* Center content when stacked */
+        gap: 40px;
+    }
+
+    .cta_title,
+    .cta_action {
+        max-width: 100%; /* Take full width when stacked */
+        text-align: center; /* Center text when stacked */
+        align-items: center; /* Center items when stacked */
+    }
+
+    .heading-style-h1-contact {
+        font-size: 80px; /* Smaller font size for tablet */
+        line-height: 1.1em;
+    }
+
+    .cta-text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) { /* Mobile breakpoint */
+    .heading-style-h1-contact {
+        font-size: 56px; /* Even smaller for mobile */
+    }
+
+    .padding-global-1 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 479px) { /* Smaller mobile breakpoint */
+    .heading-style-h1-contact {
+        font-size: 40px;
+    }
+    .cta_content {
+        gap: 30px;
+    }
+    .cta_action {
+        gap: 20px;
+    }
+}

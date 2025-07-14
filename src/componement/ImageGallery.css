@@ -1,0 +1,91 @@
+.gallery-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Prevent any overflow */
+    position: relative;
+    background: #000; /* Dark background for contrast */
+  }
+  
+  .gallery-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow images to wrap into rows */
+    width: 200vw; /* 2 rows, each 100vw (2 images of 50vw per row) */
+    height: 100vh;
+    overflow: hidden; /* Prevent container overflow */
+  }
+  
+  .gallery-image-wrapper {
+    position: relative;
+    width: 50vw; /* Each wrapper takes 50% of viewport width */
+    height: 100vh; /* Keep as 100vh as requested */
+    overflow: hidden; /* Prevent wrapper overflow */
+  }
+  
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1; /* Always visible */
+    transform: scale(1);
+    transition: all 0.5s; /* Smooth transition for opacity and transform */
+    display: block; /* Ensure image is a block element for link */
+  }
+  
+  .gallery-image:hover {
+    opacity: 0.6; /* Reduce opacity on hover */
+    transform: scale(1.05); /* Zoom effect */
+  }
+  
+  .gallery-overlay {
+    position: absolute;
+    top: auto; /* Remove top centering */
+    left: 0;
+    right: 0;
+    bottom: 20px; /* Position text near the bottom */
+    background: rgba(0, 0, 0, 0); /* No background, just text */
+    color: #fff;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Align content to the bottom */
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    padding: 10px; /* Add some padding for better look */
+  }
+  
+  .project_details {
+    text-align: center; /* Center align the text */
+  }
+  
+  .project_details_main .heading-style-h2 {
+    font-size: 0; /* Hide if no content, or add content if needed */
+    height: 0; /* Hide if empty */
+  }
+  
+  .project_details_main .heading-style-h6 {
+    font-size: 1.5rem; /* Adjust size as per design */
+    margin-bottom: 5px;
+  }
+  
+  .project_details_extra .bodytext-style-bt1 {
+    font-size: 1.2rem; /* Adjust size as per design */
+    margin-bottom: 5px;
+  }
+  
+  .text-color-n400 {
+    color: #a0a0a0; /* Example neutral color, adjust as needed */
+  }
+  
+  .gallery-image-wrapper:hover .gallery-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Remove unused styles */
+  .overlay-link {
+    display: none; /* Keep link text hidden */
+  }
