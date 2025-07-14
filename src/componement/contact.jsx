@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'; // Import useRef
-import './Contact.css';
+import './contact.css';
 import gsap from 'gsap'; // Import gsap
 import ScrollTrigger from 'gsap/ScrollTrigger'; // Import ScrollTrigger
 
