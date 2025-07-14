@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './Footer.css'; // Correct: Import the CSS file
+import './footer.css'; // Correct: Import the CSS file
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Power3, Power2 } from 'gsap';
