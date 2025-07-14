@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../App.css";
 import ImageGallery from "./ImageGallery";
-import Services from "./services";
+import Services from "./Services";
 import ServiceItem from "./ServiceItem";
 import Testimonials from "./Testimonials";
 import Contact from "./contact";
