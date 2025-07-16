@@ -1,91 +1,189 @@
 .gallery-wrapper {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden; /* Prevent any overflow */
-    position: relative;
-    background: #000; /* Dark background for contrast */
-  }
-  
-  .gallery-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow images to wrap into rows */
-    width: 200vw; /* 2 rows, each 100vw (2 images of 50vw per row) */
-    height: 100vh;
-    overflow: hidden; /* Prevent container overflow */
-  }
-  
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevent any overflow */
+  position: relative;
+  background: #000; /* Dark background for contrast */
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping initially for horizontal scroll */
+  height: 100vh; /* Fixed height for the container to match wrapper */
+  /* Width will be controlled by JS for GSAP animation.
+     It should effectively be: (number of images / images per row) * 100vw */
+  /* On desktop: 4 images / 2 per row = 2 rows. Each row is 100vw. So, container width will be 200vw. */
+  /* On mobile: 4 images / 1 per row = 4 rows. Each row is 100vw. So, container width will be 400vw. */
+  /* This width is set dynamically by the GSAP in JS, so it doesn't need to be hardcoded here. */
+  align-items: flex-start; /* Align images to the start of the container */
+  /* Removed fixed width here, as GSAP handles it for animation */
+}
+
+.gallery-image-wrapper {
+  position: relative;
+  flex-shrink: 0; /* Prevent shrinking */
+  height: 100vh;
+  overflow: hidden; /* Prevent wrapper overflow */
+  display: flex; /* For centering content within the wrapper */
+  align-items: center;
+  justify-content: center;
+  /* Width will change based on breakpoints */
+  width: 50vw; /* Default for desktop (2 images per row) */
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.5s ease; /* Smooth transition for opacity and transform */
+  display: block;
+}
+
+.gallery-image-wrapper:hover .gallery-image {
+  opacity: 0.6; /* Reduce opacity on hover */
+  transform: scale(1.05); /* Zoom effect */
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 20px; /* Position text near the bottom */
+  background: rgba(0, 0, 0, 0.4); /* Subtle transparent background for readability */
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* Align content to the bottom */
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Allow clicks through overlay by default */
+  padding: 10px;
+}
+
+.gallery-image-wrapper:hover .gallery-overlay {
+  opacity: 1;
+  pointer-events: auto; /* Enable clicks on hover */
+}
+
+.project_details {
+  text-align: center; /* Center align the text */
+  padding: 1rem; /* Padding inside details box */
+  max-width: 90%; /* Limit width of text content */
+}
+
+.project_details_main .heading-style-h2 {
+  font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem); /* Responsive font size */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.project_details_main .heading-style-h6 {
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem); /* Responsive font size */
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.project_details_extra {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Separator line */
+}
+
+.project_details_extra .bodytext-style-bt1 {
+  font-size: clamp(0.9rem, 1.5vw + 0.5rem, 1.2rem); /* Responsive font size */
+  opacity: 0.9;
+}
+
+.text-color-n400 {
+  color: #a0a0a0; /* Example neutral color, adjust as needed */
+}
+
+/* --- Responsive Media Queries --- */
+
+/* Mobile devices (up to 768px) */
+@media (max-width: 768px) {
   .gallery-image-wrapper {
-    position: relative;
-    width: 50vw; /* Each wrapper takes 50% of viewport width */
-    height: 100vh; /* Keep as 100vh as requested */
-    overflow: hidden; /* Prevent wrapper overflow */
+    width: 100vw; /* Full width for single image per row */
+    height: 70vh; /* Adjust height for mobile */
   }
-  
-  .gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 1; /* Always visible */
-    transform: scale(1);
-    transition: all 0.5s; /* Smooth transition for opacity and transform */
-    display: block; /* Ensure image is a block element for link */
+
+  .gallery-container {
+    height: 70vh; /* Match wrapper height */
+    /* GSAP will adjust its width to 400vw */
   }
-  
-  .gallery-image:hover {
-    opacity: 0.6; /* Reduce opacity on hover */
-    transform: scale(1.05); /* Zoom effect */
+
+  .gallery-wrapper {
+    min-height: 70vh;
   }
-  
+
   .gallery-overlay {
-    position: absolute;
-    top: auto; /* Remove top centering */
-    left: 0;
-    right: 0;
-    bottom: 20px; /* Position text near the bottom */
-    background: rgba(0, 0, 0, 0); /* No background, just text */
-    color: #fff;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end; /* Align content to the bottom */
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    padding: 10px; /* Add some padding for better look */
+    bottom: 10px; /* Closer to bottom on mobile */
+    padding: 5px;
   }
-  
-  .project_details {
-    text-align: center; /* Center align the text */
-  }
-  
+
   .project_details_main .heading-style-h2 {
-    font-size: 0; /* Hide if no content, or add content if needed */
-    height: 0; /* Hide if empty */
+    font-size: clamp(1.2rem, 4vw, 2rem);
   }
-  
+
   .project_details_main .heading-style-h6 {
-    font-size: 1.5rem; /* Adjust size as per design */
-    margin-bottom: 5px;
+    font-size: clamp(0.8rem, 3vw, 1.2rem);
   }
-  
+
   .project_details_extra .bodytext-style-bt1 {
-    font-size: 1.2rem; /* Adjust size as per design */
-    margin-bottom: 5px;
+    font-size: clamp(0.7rem, 2.5vw, 1rem);
   }
-  
-  .text-color-n400 {
-    color: #a0a0a0; /* Example neutral color, adjust as needed */
+}
+
+/* Tablet devices (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .gallery-image-wrapper {
+    width: 50vw; /* Two images per row */
+    height: 80vh; /* Slightly reduced height for tablets */
   }
-  
-  .gallery-image-wrapper:hover .gallery-overlay {
-    opacity: 1;
-    pointer-events: auto;
+
+  .gallery-container {
+    height: 80vh; /* Match wrapper height */
+    /* GSAP will adjust its width to 200vw */
   }
-  
-  /* Remove unused styles */
-  .overlay-link {
-    display: none; /* Keep link text hidden */
+
+  .gallery-wrapper {
+    min-height: 80vh;
   }
+
+  .gallery-overlay {
+    bottom: 15px;
+    padding: 8px;
+  }
+
+  .project_details_main .heading-style-h2 {
+    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  }
+
+  .project_details_main .heading-style-h6 {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  }
+}
+
+/* Desktop and larger (1025px and up) - Default styles already cover this well */
+@media (min-width: 1025px) {
+  .gallery-image-wrapper {
+    width: 50vw; /* Still two images per row */
+    height: 100vh; /* Full height */
+  }
+
+  .gallery-container {
+    height: 100vh;
+  }
+
+  .gallery-wrapper {
+    min-height: 100vh;
+  }
+}

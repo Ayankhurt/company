@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Testimonials.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -19,91 +19,135 @@ const Testimonials = () => {
   const imageWrapperRefs = useRef([]);
   const sectionTestimonialsRef = useRef(null); // Outer section ka ref
   const testimonialsContentRef = useRef(null); // Inner content jo pin hoga
+  const specialTextNumberTrackRef = useRef(null); // New ref for the number track
+
+  // State to manage whether it's desktop/tablet or mobile
+  const [isDesktopOrTablet, setIsDesktopOrTablet] = useState(window.innerWidth >= 1024); // Adjust breakpoint as needed
 
   useEffect(() => {
-    const buttons = gsap.utils.toArray(".testimonial_button");
-    const largeNumbers = gsap.utils.toArray(".special-text-number");
-    const wrappers = imageWrapperRefs.current;
+    // Function to update the breakpoint state
+    const handleResize = () => {
+      setIsDesktopOrTablet(window.innerWidth >= 1024); // Update state on resize
+    };
 
-    // --- Master Timeline aur ScrollTrigger Setup ---
-    // Outer section ke liye total scroll height calculate karein
-    // Humein 100vh chahiye section ko viewport mein laane ke liye,
-    // plus (data.length - 1) * window.innerWidth horizontal scroll ke liye.
-    // Yahan window.innerWidth ko har horizontal slide ke liye scroll distance maan rahe hain.
-    const scrollPerHorizontalSlide = window.innerWidth;
-    const totalHorizontalScrollNeeded = scrollPerHorizontalSlide * (data.length - 1);
-    const totalSectionHeight = window.innerHeight + totalHorizontalScrollNeeded; // Total height for the outer section
+    window.addEventListener('resize', handleResize);
 
-    if (sectionTestimonialsRef.current) {
+    let masterTL; // Declare masterTL outside the if block for cleanup
+
+    if (isDesktopOrTablet) {
+      // GSAP animations for desktop/tablet
+      const buttons = gsap.utils.toArray(".testimonial_button");
+      const wrappers = imageWrapperRefs.current;
+      const numberTrack = specialTextNumberTrackRef.current; // Target the new track
+
+      // Ensure initial state is correctly set when entering desktop view
+      gsap.set(numberTrack, { y: 0 }); // Ensure the track starts at the top
+      gsap.set(wrappers, { x: 0 }); // Ensure images start at left
+
+      // Calculate total scroll height for horizontal pinning
+      const scrollPerHorizontalSlide = window.innerWidth;
+      const totalHorizontalScrollNeeded = scrollPerHorizontalSlide * (data.length - 1);
+      const totalSectionHeight = window.innerHeight + totalHorizontalScrollNeeded;
+
+      if (sectionTestimonialsRef.current) {
         sectionTestimonialsRef.current.style.height = `${totalSectionHeight}px`;
-    }
+      }
 
-    let masterTL = gsap.timeline({
+      masterTL = gsap.timeline({
         scrollTrigger: {
-            trigger: sectionTestimonialsRef.current, // Outer section trigger karega pin ko
-            start: "top top", // Jab outer section ka top, viewport ke top se takrayega, tab pin shuru hoga
-            end: `+=${totalHorizontalScrollNeeded}`, // Horizontal movement ke liye jitna scroll chahiye, utni der tak pin rahega
-            scrub: 1,
-            pin: testimonialsContentRef.current, // Inner content div ko pin karein
-            snap: {
-                snapTo: 1 / (data.length - 1), // Har horizontal slide par snap karein
-                duration: 0.3,
-                ease: "power1.inOut",
-            },
-            onUpdate: (self) => {
-                const progress = self.progress;
-                // Horizontal slides ke liye activeIndex calculate karein (0 se data.length - 1 tak)
-                const activeIndex = Math.min(data.length - 1, Math.floor(progress * (data.length - 1)));
+          trigger: sectionTestimonialsRef.current,
+          start: "top top",
+          end: `+=${totalHorizontalScrollNeeded}`,
+          scrub: 1,
+          pin: testimonialsContentRef.current,
+          snap: {
+            snapTo: 1 / (data.length - 1),
+            duration: 0.3,
+            ease: "power1.inOut",
+          },
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const activeIndex = Math.min(data.length - 1, Math.floor(progress * (data.length - 1)));
 
-                buttons.forEach((button, index) => {
-                    if (index === activeIndex) {
-                        button.classList.add('is-active');
-                    } else {
-                        button.classList.remove('is-active');
-                    }
-                });
+            buttons.forEach((button, index) => {
+              if (index === activeIndex) {
+                button.classList.add('is-active');
+              } else {
+                button.classList.remove('is-active');
+              }
+            });
 
-                if (currentNameRef.current && currentTitleRef.current) {
-                    currentNameRef.current.textContent = data[activeIndex].name;
-                    currentTitleRef.current.textContent = data[activeIndex].title;
-                }
-            },
-            // Jab component mount ho ya scroll karke is section tak pahunche
-            onEnter: () => {
-                buttons[0].classList.add('is-active');
-                if (currentNameRef.current && currentTitleRef.current) {
-                    currentNameRef.current.textContent = data[0].name;
-                    currentTitleRef.current.textContent = data[0].title;
-                }
-            },
-            onLeaveBack: () => { // Jab scroll karke pin kiye hue section se wapas upar jaayen
-                buttons.forEach(button => button.classList.remove('is-active'));
-                buttons[0].classList.add('is-active');
-                if (currentNameRef.current && currentTitleRef.current) {
-                    currentNameRef.current.textContent = data[0].name;
-                    currentTitleRef.current.textContent = data[0].title;
-                }
-            },
+            if (currentNameRef.current && currentTitleRef.current) {
+              currentNameRef.current.textContent = data[activeIndex].name;
+              currentTitleRef.current.textContent = data[activeIndex].title;
+            }
+          },
+          onEnter: () => {
+            // Ensure initial state is correctly set when entering desktop view
+            buttons[0].classList.add('is-active');
+            if (currentNameRef.current && currentTitleRef.current) {
+              currentNameRef.current.textContent = data[0].name;
+              currentTitleRef.current.textContent = data[0].title;
+            }
+          },
+          onLeaveBack: () => {
+            // Reset to first item when scrolling back out
+            buttons.forEach(button => button.classList.remove('is-active'));
+            buttons[0].classList.add('is-active');
+            if (currentNameRef.current && currentTitleRef.current) {
+              currentNameRef.current.textContent = data[0].name;
+              currentTitleRef.current.textContent = data[0].title;
+            }
+          },
+          // markers: true // Uncomment for debugging ScrollTrigger
         }
-    });
+      });
 
-    // Large numbers ko animate karein (vertical scroll)
-    masterTL.to(largeNumbers, {
-        yPercent: -100 * (largeNumbers.length - 1),
+      // Animate the entire number track vertically
+      masterTL.to(numberTrack, {
+        yPercent: -100 * (data.length - 1), // Move up by 100% of track's height for each slide
         ease: "none"
-    }, 0); // Master timeline ke shuru mein hi shuru karein
+      }, 0); // Start at the beginning of the master timeline
 
-    // Image wrappers ko animate karein (horizontal scroll)
-    masterTL.to(wrappers, {
+      masterTL.to(wrappers, {
         xPercent: -100 * (wrappers.length - 1),
         ease: "none"
-    }, 0); // Master timeline ke shuru mein hi shuru karein
+      }, 0);
 
-    // Initial state set karein (jab component mount hota hai, scroll se pehle)
-    buttons[0].classList.add('is-active');
-    if (currentNameRef.current && currentTitleRef.current) {
-      currentNameRef.current.textContent = data[0].name;
-      currentTitleRef.current.textContent = data[0].title;
+      // Initial state set (when component mounts, before scroll or if already in view)
+      buttons[0].classList.add('is-active');
+      if (currentNameRef.current && currentTitleRef.current) {
+        currentNameRef.current.textContent = data[0].name;
+        currentTitleRef.current.textContent = data[0].title;
+      }
+
+    } else {
+      // For mobile, ensure elements are visible and at their natural scale/position
+      // and reset any inline styles set by GSAP if it was previously active
+      if (sectionTestimonialsRef.current) {
+        sectionTestimonialsRef.current.style.height = 'auto'; // Reset height for mobile
+      }
+      if (testimonialsContentRef.current) {
+        gsap.set(testimonialsContentRef.current, { clearProps: "all" }); // Clear all GSAP-set inline styles
+      }
+      imageWrapperRefs.current.forEach(el => {
+        if (el) gsap.set(el, { clearProps: "all" });
+      });
+      // Clear transforms on the number track and individual numbers for mobile
+      if (specialTextNumberTrackRef.current) {
+        gsap.set(specialTextNumberTrackRef.current, { clearProps: "all" });
+      }
+      gsap.utils.toArray(".special-text-number").forEach(el => {
+        if (el) gsap.set(el, { clearProps: "all" });
+      });
+      gsap.utils.toArray(".testimonial_button").forEach(button => {
+        button.classList.remove('is-active'); // Remove active class
+      });
+      // Set initial content for mobile view (first testimonial)
+      if (currentNameRef.current && currentTitleRef.current && data.length > 0) {
+        currentNameRef.current.textContent = data[0].name;
+        currentTitleRef.current.textContent = data[0].title;
+      }
     }
 
     // Load hone par hash se auto-scroll ko rokein
@@ -112,35 +156,48 @@ const Testimonials = () => {
       history.replaceState(null, null, ' ');
     }
 
-    // ScrollTrigger instances ko cleanup karein
+    // Cleanup on unmount or when breakpoint changes
     return () => {
-        masterTL.kill();
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      window.removeEventListener('resize', handleResize);
+      if (masterTL) {
+        masterTL.kill(); // Kill the timeline and its ScrollTriggers
+      }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Ensure all triggers are killed
     };
 
-  }, []);
+  }, [isDesktopOrTablet]); // Re-run effect when isDesktopOrTablet changes
 
   return (
     <div className="section_testimonials" id="testimonial" ref={sectionTestimonialsRef}>
-      <div className="testimonials_content" ref={testimonialsContentRef}> {/* Yeh div pin hoga */}
+      {/* Desktop/Tablet Content */}
+      <div className="testimonials_content" ref={testimonialsContentRef}>
         <section className="testimonials_left padding-global">
           <div className="testimonials_top">
-            <div className="testimonials_links">
-              {data.map((d, i) => (
-                <div key={i} className={`testimonial_button _${i + 1}`}>
-                  <div className="button-style-b3">{d.number}</div>
-                  <div className="button-style-b3">{d.name}</div>
-                </div>
-              ))}
-            </div>
+            {/* Testimonial Buttons (visible on desktop/tablet) */}
+            {isDesktopOrTablet && (
+              <div className="testimonials_links">
+                {data.map((d, i) => (
+                  <div key={i} className={`testimonial_button _${i + 1}`}>
+                    <div className="button-style-b3">{d.number}</div>
+                    <div className="button-style-b3">{d.name}</div>
+                  </div>
+                ))}
+              </div>
+            )}
 
-            <div className="special-text-number-block">
-              {data.map((d, i) => (
-                <div key={i} className={`special-text-number _${i + 1}`}>
-                  {d.number}
+            {/* Large Scrolling Numbers (visible on desktop/tablet) */}
+            {isDesktopOrTablet && (
+              <div className="special-text-number-block">
+                {/* New wrapper for sequential number scrolling */}
+                <div className="special-text-number-track" ref={specialTextNumberTrackRef}>
+                  {data.map((d, i) => (
+                    <div key={i} className={`special-text-number _${i + 1}`}>
+                      {d.number}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            )}
           </div>
 
           <div className="testimony_current_info">
@@ -150,13 +207,16 @@ const Testimonials = () => {
             </div>
           </div>
 
-          <div className="testimony_swipe">
-            <div className="heading-style-h6">Swipe For More</div>
-          </div>
+          {/* Swipe For More (visible on mobile only) */}
+          {!isDesktopOrTablet && (
+            <div className="testimony_swipe">
+              <div className="heading-style-h6">Swipe For More</div>
+            </div>
+          )}
         </section>
 
         <div className="testimonials_right">
-          <div className="testimonials_image-block"> {/* Yeh div horizontally scrolling images ko hold karega */}
+          <div className="testimonials_image-block">
             {data.map((d, i) => (
               <div
                 key={i}
@@ -173,6 +233,23 @@ const Testimonials = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Mobile-specific Testimonial Content (rendered conditionally by CSS) */}
+      <div className="testimonials_mobile_list">
+        {data.map((d, i) => (
+          <div key={`mobile-${i}`} className="mobile_testimonial_item">
+            <div className="mobile_testimonial_image_wrapper">
+              <img src={d.imageUrl} alt={`Testimonial ${d.number}`} className="mobile_testimonial_image" />
+              <div className="mobile_testimonial_bg" style={{ backgroundImage: `url(${d.bgImageUrl})` }}></div>
+            </div>
+            <div className="mobile_testimonial_details">
+              <div className="mobile_testimonial_number">{d.number}</div>
+              <div className="mobile_testimonial_name">{d.name}</div>
+              <div className="mobile_testimonial_title">{d.title}</div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

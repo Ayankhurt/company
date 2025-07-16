@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import './Services.css';
+import './Services.css'; // Make sure this path is correct
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,28 +9,30 @@ const Services = () => {
   useEffect(() => {
     // Split text into words for individual animation
     const mainText = document.querySelector('.services-main-text');
-    const words = mainText.textContent.split(' ');
-    mainText.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
+    if (mainText) { // Add a check to ensure element exists
+      const words = mainText.textContent.split(' ');
+      mainText.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
 
-    // Animate each word from gray to white on scroll
-    gsap.utils.toArray(".word").forEach((word, index) => {
-      gsap.fromTo(word,
-        {
-          color: "#616161" // Start with gray
-        },
-        {
-          color: "#ffffff", // Change to white
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: word,
-            start: "top 80%",
-            end: "top 20%",
-            scrub: 1,
-            toggleActions: "play none none reverse"
+      // Animate each word from gray to white on scroll
+      gsap.utils.toArray(".word").forEach((word, index) => {
+        gsap.fromTo(word,
+          {
+            color: "#616161" // Start with gray
+          },
+          {
+            color: "#ffffff", // Change to white
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: word,
+              start: "top 80%",
+              end: "top 20%",
+              scrub: 1,
+              toggleActions: "play none none reverse"
+            }
           }
-        }
-      );
-    });
+        );
+      });
+    }
 
     // Cleanup on unmount
     return () => {
@@ -47,7 +49,9 @@ const Services = () => {
               Unlock the full power of AI through expertly crafted prompts tailored to your goals.
             </h1>
           </div>
-          </div>
+          {/* Assuming ServiceItem component will be rendered here, as per your Main.js */}
+          {/* For now, just showing the main text section */}
+        </div>
       </div>
     </div>
   );

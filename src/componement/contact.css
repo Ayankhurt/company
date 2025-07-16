@@ -39,21 +39,21 @@
     /* etc. */
 }
 
-/* ... (your existing root variables) ... */
-
 /* General Layout */
 .section_cta {
     background-color: var(--_colors---primary--p500); /* Dark background */
     color: var(--_colors---neutral--n100); /* White text color */
-    height: 100%; /* Full viewport height */
+    min-height: 80vh; /* Use min-height to ensure content fits, responsive */
     display: flex;
     align-items: center; /* Vertically center content */
     justify-content: center; /* Horizontally center content */
     position: relative; /* For background image positioning */
     overflow: hidden; /* Hide any overflow from background image */
+    padding: 80px 20px; /* Default padding for smaller screens */
+    box-sizing: border-box;
 }
 
-/* Background Image (if any, as seen in the promptcrafted site) */
+/* Background Image */
 .section_cta::before {
     content: '';
     position: absolute;
@@ -68,137 +68,130 @@
     z-index: 0;
 }
 
-
 .container {
     max-width: 1200px; /* Adjust container width as needed */
     margin: 0 auto; /* Center the container */
-    padding: 0 40px; /* Global padding, adjust if needed */
+    padding: 0 20px; /* Responsive padding for inner container */
     position: relative; /* Ensure content is above background */
     z-index: 1;
+    width: 100%; /* Ensure container takes full width */
 }
 
 .cta_content {
     display: flex;
-    /* Changed to row to place title left and action right */
-    flex-direction: row;
-    /* Align items to the start vertically within the row */
-    align-items: flex-start;
-    /* Space between the two columns */
-    justify-content: space-between;
-    width: 100%; /* Ensure it takes full width of container */
+    flex-direction: row; /* Default to row for larger screens */
+    align-items: center; /* Vertically center items in row */
+    justify-content: space-between; /* Space between the two columns */
+    width: 100%;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .cta_title {
-    /* Set initial opacity to 0 for animation */
-    opacity: 0;
-    /* Allow it to take up available space, but not too much */
-    flex: 1;
-    max-width: 60%; /* Adjust as needed */
+    opacity: 0; /* Initial opacity for animation */
+    flex: 1; /* Allow it to take available space */
+    max-width: 60%; /* Desktop max-width */
+    text-align: left; /* Default alignment */
+    padding-right: 20px; /* Space between title and action */
+    box-sizing: border-box;
 }
 
 .heading-style-h1-contact {
     font-family: var(--font-families--heading);
-    font-size: var(--heading-1--font-size);
-    line-height: var(--heading-1--line-height);
+    font-size: clamp(2.5rem, 6vw + 1rem, 7rem); /* Responsive font size using clamp */
+    line-height: 1.1em; /* Tighter line height */
     font-weight: var(--heading-1--font-weight);
     letter-spacing: var(--heading-1--letter-spacing);
-    color: var(--_colors---neutral--n100); /* White color */
-    text-align: left; /* Align to left */
-    /* Removed max-width here as it's on cta_title now */
+    color: var(--_colors---neutral--n100);
 }
 
 .cta_action {
-    /* Set initial opacity to 0 for animation */
-    opacity: 0;
+    opacity: 0; /* Initial opacity for animation */
     display: flex;
     flex-direction: column;
-    /* Align text and button to the right within its column */
-    align-items: flex-end;
-    gap: 30px; /* Space between cta-text and button */
+    align-items: flex-end; /* Align text and button to the right */
+    gap: 20px; /* Space between cta-text and button */
     flex: 1;
-    max-width: 40%; /* Adjust as needed */
+    max-width: 40%; /* Desktop max-width */
     text-align: right; /* Align text to the right */
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    position: relative; /* Changed from absolute to relative for responsive flow */
+    margin-top: 0; /* Reset margin */
 }
 
 .cta-text {
-    font-family: var(--font-families--heading); /* Use heading font for this text */
-    font-size: var(--heading-6--font-size);
-    line-height: var(--heading-6--line-height);
+    font-family: var(--font-families--heading);
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem); /* Responsive font size */
+    line-height: 1.4em;
     font-weight: var(--heading-6--font-weight);
     letter-spacing: var(--heading-6--letter-spacing);
     color: var(--_colors---neutral--n500);
-    text-align: left;
-    max-width: 250px; /* Limit width for this text block */
+    text-align: right; /* Align text to the right */
+    max-width: 300px; /* Limit width for this text block */
 }
 
 /* CTA Button Styling */
 .cta_button {
-    text-decoration: none; /* Remove underline from link */
-    color: var(--_colors---neutral--n100); /* White text for button */
+    text-decoration: none;
+    color: var(--_colors---neutral--n100);
     position: relative;
-    display: inline-block; /* Allows width/height and positioning */
-    padding-bottom: 8px; /* Space for the line below */
+    display: inline-block;
+    padding-bottom: 8px;
 }
 
 .button-style-b1 {
     font-family: var(--button-1--font-family);
-    font-size: var(--button-1--font-size);
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem); /* Responsive font size */
     line-height: var(--button-1--line-height);
     font-weight: var(--button-1--font-weight);
     letter-spacing: var(--button-1--letter-spacing);
-    display: flex; /* To align content and line */
+    display: flex;
     flex-direction: column;
-    /* Changed to align items to the end for right alignment */
-    align-items: flex-end;
+    align-items: flex-end; /* Align content to the right */
 }
 
 .button_content {
     display: flex;
     align-items: center;
-    gap: 150px; /* Space between "Let's Talk" and arrow */
-    padding-right: 5px; /* Small padding for arrow */
+    gap: 10px; /* Smaller, more responsive gap between "Let's Talk" and arrow */
+    padding-right: 5px;
 }
 
 .button_arrow {
-    width: 16px; /* Adjust arrow size */
+    width: 16px;
     height: 16px;
-    filter: invert(100%); /* Make arrow white if it's black SVG */
-    transition: transform 0.3s ease; /* Smooth transition for hover */
+    filter: invert(100%);
+    transition: transform 0.3s ease;
 }
+
 .button_line {
-    width: 100%; /* Line spans full width of button text */
-    height: 2px; /* Thickness of the line */
-    stroke: var(--_colors---neutral--n100); /* Directly set stroke to white */
+    width: 100%;
+    height: 2px;
+    stroke: var(--_colors---neutral--n100);
     stroke-width: 2;
-    opacity: 0.2; /* Default opacity for the faded line */
-    transition: opacity 0.3s ease; /* Smooth transition for hover */
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
 }
-/* .button_line:hover{
-    color: white;
-} */
+
 /* Hover effects for the button */
 .cta_button:hover .button_arrow {
-    transform: translateX(5px); /* Move arrow slightly on hover */
+    transform: translateX(5px);
 }
 
 .cta_button:hover .button_line {
-    opacity: 1; /* Make line fully visible on hover */
-}
-
-/* Global padding (from your Testimonials.css) - ensure this is consistent */
-.padding-global-1 {
-    padding: 272px 40px 100px 40px;
+    opacity: 1;
 }
 
 /* Responsive adjustments */
-@media (max-width: 991px) { /* Adjusted breakpoint for better tablet view */
+/* Tablet and smaller desktops */
+@media (max-width: 1024px) {
+    .section_cta {
+        padding: 60px 20px; /* Adjust padding for tablets */
+        min-height: 60vh;
+    }
+
     .cta_content {
-        flex-direction: column; /* Stack columns on smaller screens */
+        flex-direction: column; /* Stack columns vertically */
         align-items: center; /* Center content when stacked */
-        gap: 40px;
+        gap: 40px; /* Space between stacked elements */
     }
 
     .cta_title,
@@ -206,37 +199,56 @@
         max-width: 100%; /* Take full width when stacked */
         text-align: center; /* Center text when stacked */
         align-items: center; /* Center items when stacked */
+        padding-right: 0; /* Remove right padding */
+    }
+
+    .cta_action {
+        margin-top: 20px; /* Add some top margin when stacked */
     }
 
     .heading-style-h1-contact {
-        font-size: 80px; /* Smaller font size for tablet */
+        font-size: clamp(2rem, 8vw, 4rem); /* Adjust font size for tablets */
         line-height: 1.1em;
     }
 
     .cta-text {
-        font-size: 18px;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Adjust font size for tablets */
+        max-width: 80%; /* Limit width for better readability */
+    }
+
+    .button-style-b1 {
+        align-items: center; /* Center button content when stacked */
     }
 }
 
-@media (max-width: 767px) { /* Mobile breakpoint */
-    .heading-style-h1-contact {
-        font-size: 56px; /* Even smaller for mobile */
+/* Mobile devices */
+@media (max-width: 767px) {
+    .section_cta {
+        padding: 40px 15px; /* Further adjust padding for mobile */
+        min-height: 50vh;
     }
 
-    .padding-global-1 {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-@media (max-width: 479px) { /* Smaller mobile breakpoint */
-    .heading-style-h1-contact {
-        font-size: 40px;
-    }
     .cta_content {
         gap: 30px;
     }
-    .cta_action {
-        gap: 20px;
+
+    .heading-style-h1-contact {
+        font-size: clamp(1.8rem, 9vw, 3rem); /* Adjust font size for mobile */
+    }
+
+    .cta-text {
+        font-size: clamp(0.8rem, 3vw, 1rem); /* Adjust font size for mobile */
+        max-width: 90%;
+    }
+
+    .button_content {
+        gap: 8px; /* Smaller gap for mobile button */
+    }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 479px) {
+    .heading-style-h1-contact {
+        font-size: clamp(1.5rem, 10vw, 2.5rem); /* Smallest font size for very small screens */
     }
 }
