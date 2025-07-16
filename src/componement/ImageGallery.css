@@ -112,7 +112,7 @@
 @media (max-width: 768px) {
   .gallery-image-wrapper {
     width: 100vw; /* Full width for single image per row */
-    height: 70vh; /* Adjust height for mobile */
+    height: 100; /* Adjust height for mobile */
   }
 
   .gallery-container {
