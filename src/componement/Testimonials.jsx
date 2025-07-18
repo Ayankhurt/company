@@ -58,7 +58,7 @@ const Testimonials = () => {
           trigger: sectionTestimonialsRef.current,
           start: "top top",
           end: `+=${totalHorizontalScrollNeeded}`,
-          scrub: 1,
+          scrub: 0.05,
           pin: testimonialsContentRef.current,
           snap: {
             snapTo: 1 / (data.length - 1),
