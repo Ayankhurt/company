@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../App.css"; // Ensure this path is correct
+import "./navbar.css"; // Ensure this path is correct
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to manage burger menu visibility

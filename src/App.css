@@ -15,7 +15,6 @@
   /* Keeping original CSS variables for font sizing and weights if they are used elsewhere */
   --_colors---primary--p500: #191919;
   --heading-1--font-family: "Inter", sans-serif;
-  --heading-1--font-size: 128px;
   --heading-1--line-height: 1.24em;
   --heading-1--font-weight: 800;
   --heading-1--letter-spacing: -0.02em;
@@ -84,6 +83,19 @@ body {
   align-self: flex-end;
   max-width: 454px;
   margin-bottom: 2rem;
+  color: #212121; /* Ensure hero meta text color is defined */
+}
+
+.hero-meta .text-xl { /* Specific rule for the descriptive text */
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500;
+  line-height: 1.6;
+  color: #616161; /* Adjust if needed */
+}
+@media (min-width: 640px) { /* sm breakpoint */
+  .hero-meta .sm\:text-2xl {
+    font-size: 1.5rem; /* 24px */
+  }
 }
 
 .heading-hero-block {
@@ -91,6 +103,65 @@ body {
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
+}
+
+/* Custom classes for hero main text (replace Tailwind-like classes) */
+/* Base (mobile) font size */
+.main-text {
+  font-family: var(--font-families--heading);
+  font-weight: var(--heading-1--font-weight);
+  line-height: var(--heading-1--line-height);
+  letter-spacing: var(--heading-1--letter-spacing);
+  font-size: 3rem; /* Default for mobile, roughly 48px */
+}
+
+/* Small screens (sm: 640px and up) */
+@media (min-width: 640px) {
+  .main-text {
+    font-size: 5rem; /* ~80px */
+  }
+}
+
+/* Medium screens (md: 768px and up, if you want another step) */
+@media (min-width: 768px) {
+  .main-text {
+    font-size: 6.5rem; /* ~104px */
+  }
+}
+
+/* Large screens (lg: 1024px and up) */
+@media (min-width: 1024px) {
+  .main-text {
+    font-size: 8rem; /* ~128px, same as --heading-1--font-size */
+  }
+}
+
+/* Hero Cursor styling */
+#hero-cursor {
+  font-family: var(--font-families--heading);
+  font-weight: var(--heading-1--font-weight);
+  line-height: var(--heading-1--line-height);
+  font-size: 3rem; /* Default for mobile, roughly 48px */
+  color: black; /* Ensure cursor is visible */
+}
+
+/* Responsive adjustments for Hero cursor */
+@media (min-width: 640px) { /* sm breakpoint */
+  #hero-cursor {
+    font-size: 5rem; /* ~80px */
+  }
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  #hero-cursor {
+    font-size: 6.5rem; /* ~104px */
+  }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  #hero-cursor {
+    font-size: 8rem; /* ~128px */
+  }
 }
 
 /* Typewrite animation */
@@ -107,265 +178,20 @@ body {
   50% { opacity: 0; }
 }
 
-/* Responsive adjustments for Hero section */
-@media (max-width: 1023px) {
-  .section-hero {
-    padding-top: var(--navbar-height); /* Ensure padding adjusts for smaller screens too */
-    text-align: center;
-  }
-  .hero-content {
-    align-items: center;
-  }
-  .hero-meta {
-    text-align: center;
-    align-self: center;
-    max-width: 90%;
-  }
-  .heading-hero-block {
-    justify-content: center;
-  }
-  .heading-style-h1 {
-    font-size: 3rem;
-    line-height: 1.1;
-  }
-  #hero-cursor {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .heading-style-h1 {
-    font-size: 2.5rem;
-  }
-  #hero-cursor {
-    font-size: 2.5rem;
-  }
-}
-
 /* General Section Padding */
-
 /* Ensure container max-width and auto margins are respected */
 .container {
   max-width: 1360px;
   margin-left: auto;
   margin-right: auto;
-
+  padding-left: 1rem; /* Default padding for small screens */
+  padding-right: 1rem; /* Default padding for small screens */
 }
 
 /* Responsive adjustments for general layout */
-@media (max-width: 1023px) {
+@media (min-width: 1024px) { /* lg breakpoint */
   .container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-/* --- Navbar Specific Styles (Combined from navbar.css) --- */
-
-/* Base styles for the Navbar container */
-.navbar-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 20;
-  width: 100%;
-  background-color: #000000; /* bg-black */
-  color: #ffffff; /* text-white */
-  padding: 1rem; /* py-4, px-4 */
-  box-sizing: border-box; /* Ensure padding is included in width/height */
-  height: var(--navbar-height, 80px); /* Define a CSS variable for height */
-  display: flex; /* Ensure flex for inner container centering */
-  align-items: center; /* Center items vertically */
-}
-
-/* Inner container for alignment */
-.navbar-inner-container {
-  max-width: 1360px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Brand Logo Styling */
-.navbar-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.navbar-brand-devano {
-  font-size: 1.875rem; /* text-3xl */
-  font-weight: 800; /* font-extrabold */
-  letter-spacing: 0.025em; /* tracking-wide */
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.navbar-brand-uk {
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 700; /* font-bold */
-  letter-spacing: 0.025em; /* tracking-wide */
-  margin-top: -5px; /* mt-[-5px] */
-  color: #ffffff;
-  text-decoration: none;
-}
-
-/* Burger Menu Button Wrapper */
-.navbar-toggle-button-wrapper {
-  display: block; /* Always block for the wrapper */
-}
-
-/* Burger Menu Button for Mobile */
-.navbar-toggle-button {
-  color: #ffffff;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.navbar-toggle-button svg {
-  width: 2rem;
-  height: 2rem;
-}
-
-/* Navigation Links Container */
-.navbar-nav {
-  display: none; /* hidden by default */
-  position: absolute;
-  top: var(--navbar-height, 80px); /* Position below the navbar */
-  left: 0;
-  width: 100%;
-  background-color: #000000;
-  padding: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease-in-out;
-}
-
-.navbar-nav.is-open {
-  display: block; /* Show when menu is open */
-}
-
-/* Navigation List */
-.navbar-nav-list {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.navbar-nav-list li {
-  margin-bottom: 1rem;
-}
-
-/* Navigation Links */
-.navbar-nav-list-link {
-  display: block;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: #ffffff;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.navbar-nav-list-link:hover {
-  background-color: #4a5568;
-}
-
-/* Contact Button Wrapper */
-.navbar-contact-button-wrapper {
-  display: none; /* hidden by default, shown via media query */
-}
-
-/* Contact Button */
-.navbar-contact-button {
-  display: inline-flex; /* Use inline-flex for button content */
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 9999px;
-  font-weight: 600;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.navbar-contact-button:hover {
-  background-color: #edf2f7;
-}
-
-.navbar-contact-button img {
-  width: 1rem;
-  height: 1rem;
-  margin-left: 0.5rem;
-}
-
-/* Responsive Media Queries */
-
-/* Small screens (sm: breakpoint - 640px and up) */
-@media (min-width: 640px) {
-  .navbar-container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  .navbar-brand-devano {
-    font-size: 2.25rem;
-  }
-  .navbar-brand-uk {
-    font-size: 1.5rem;
-  }
-}
-
-/* Large screens (lg: breakpoint - 1024px and up) */
-@media (min-width: 1024px) {
-  .navbar-container {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
-  .navbar-toggle-button-wrapper {
-    display: none; /* Hide burger menu on larger screens */
-  }
-
-  .navbar-nav {
-    display: flex; /* Show nav links on larger screens */
-    position: static;
-    top: auto;
-    left: auto;
-    width: auto;
-    background-color: transparent;
-    padding: 0;
-    box-shadow: none;
-  }
-
-  .navbar-nav-list {
-    flex-direction: row;
-    text-align: left;
-  }
-
-  .navbar-nav-list li {
-    margin-bottom: 0;
-    margin-left: 2rem;
-  }
-
-  .navbar-contact-button-wrapper {
-    display: block; /* Show contact button on larger screens */
   }
 }

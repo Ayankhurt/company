@@ -52,15 +52,6 @@ const Main = () => {
         new TxtType(elements[i], JSON.parse(toRotate), period);
       }
     }
-
-    // INJECT CSS (This part is usually handled by a global CSS file or Tailwind config)
-    // Removed direct CSS injection for cleaner React practice, assuming styles are in App.css or Tailwind.
-    // If this CSS is critical and not handled elsewhere, it should be added to App.css.
-
-    // Cleanup on unmount (only if CSS was injected dynamically)
-    // return () => {
-    //   if (css.parentNode) css.parentNode.removeChild(css);
-    // };
   }, []);
 
   return (
@@ -77,18 +68,18 @@ const Main = () => {
             </div>
             <div className="hero-main w-full">
               <div className="heading-hero-block flex flex-col lg:flex-row items-center lg:items-start space-y-4 lg:space-y-0 lg:space-x-8">
-                <h1 className=" main-text text-10xl sm:text-14xl lg:text-16xl font-extrabold leading-tight">
+                <h1 className="main-text font-extrabold leading-tight"> {/* Use the new 'main-text' class */}
                   AI-Driven{" "}
                   <a
                     href="#"
-                    className="typewrite text-white" // Added text-white for visibility on background
+                    className="typewrite text-white"
                     data-period="2000"
                     data-type='[ "Copy", "Human", "Touch" ]'
                   >
                     <span className="wrap"></span>
                   </a>
                 </h1>
-                <h1 id="hero-cursor" className="text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-tight animation1">
+                <h1 id="hero-cursor" className="font-extrabold leading-tight animation1"> {/* Use the new cursor styles defined in CSS */}
                   _
                 </h1>
               </div>

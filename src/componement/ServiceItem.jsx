@@ -11,9 +11,9 @@ const ServiceItem = () => {
   const serviceRef3 = useRef(null);
 
   useEffect(() => {
-    // Check if the screen width is greater than a mobile breakpoint (e.g., 768px)
+    // Check if the screen width is greater than or equal to the tablet breakpoint (e.g., 768px)
     // If it's a mobile device, the animation will not be initialized.
-    const isDesktopOrTablet = window.innerWidth >= 768; // You can adjust this breakpoint as needed
+    const isDesktopOrTablet = window.innerWidth >= 768; // Matches your CSS breakpoint
 
     if (isDesktopOrTablet) {
       [serviceRef1, serviceRef2, serviceRef3].forEach(ref => {

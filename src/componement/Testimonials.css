@@ -1,617 +1,702 @@
-/* Root variables (from your original code) */
+/* Root variables (from your original code) - keeping these as is */
 :root {
-    --_colors---primary--p500: #191919;
-    --heading-1--font-family: "Funnel Display", sans-serif;
-    --heading-1--font-size: 128px;
-    --heading-1--line-height: 1.24em;
-    --heading-1--font-weight: 800;
-    --heading-1--letter-spacing: -0.02em;
-    --heading-2--font-family: "Funnel Display", sans-serif;
-    --heading-2--font-size: 48px; /* Used for the large name at bottom */
-    --heading-2--line-height: 1.24em;
-    --heading-2--font-weight: 700;
-    --heading-2--letter-spacing: -0.02em;
-    --heading-3--font-family: "Funnel Display", sans-serif;
-    --heading-3--font-size: 36px;
-    --heading-3--line-height: 1.28em;
-    --heading-3--font-weight: 700;
-    --heading-3--letter-spacing: -0.02em;
-    --heading-4--font-family: "Funnel Display", sans-serif;
-    --heading-4--font-size: 28px; /* Used for the title at bottom */
-    --heading-4--line-height: 1.32em;
-    --heading-4--font-weight: 700;
-    --heading-4--letter-spacing: -0.02em;
-    --heading-5--font-family: "Funnel Display", sans-serif;
-    --heading-5--font-size: 24px;
-    --heading-5--line-height: 1.36em;
-    --heading-5--font-weight: 600;
-    --heading-5--letter-spacing: -0.02em;
-    --heading-6--font-family: "Funnel Display", sans-serif;
-    --heading-6--font-size: 20px;
-    --heading-6--line-height: 1.4em;
-    --heading-6--font-weight: 500;
-    --heading-6--letter-spacing: -0.02em;
-    --_colors---neutral--n600: #757575;
-    --heading-7--font-family: "Funnel Display", sans-serif;
-    --heading-7--font-size: 18px;
-    --heading-7--line-height: 1.44em;
-    --heading-7--font-weight: 500;
-    --heading-7--letter-spacing: -0.02em;
-    --body-text-1--font-family: "Rethink Sans", sans-serif;
-    --body-text-1--font-size: 16px;
-    --body-text-1--line-height: 1.5em;
-    --body-text-1--font-weight: 400;
-    --body-text-1--letter-spacing: -0.03em;
-    --button-1--font-family: "Rethink Sans", sans-serif;
-    --button-1--font-size: 20px;
-    --button-1--line-height: 1.2em;
-    --button-1--font-weight: 500;
-    --button-1--letter-spacing: -0.02em;
-    --button-2--font-family: "Rethink Sans", sans-serif;
-    --button-2--font-size: 16px;
-    --button-2--line-height: 1.2em;
-    --button-2--font-weight: 500;
-    --button-2--letter-spacing: -0.02em;
-    --button-3--font-family: "Rethink Sans", sans-serif;
-    --button-3--font-size: 14px;
-    --button-3--line-height: 1.2em;
-    --button-3--font-weight: 500;
-    --button-3--letter-spacing: -0.02em;
-    --font-weights--bold: 700;
-    --font-weights--extra-bold: 800;
-    --_colors---neutral--n100: white;
-    --_colors---neutral--n500: #9e9e9e;
-    --_colors---neutral--n400: #bdbdbd;
-    --_colors---neutral--n700: #616161;
-    --_colors---primary--p100: #f2f2f2;
-    --line-heights--100: 1em;
-    --special-text--font-family: "Funnel Display", sans-serif;
-    --special-text--font-size: 140px; /* For the large 01, 02 etc. */
-    --special-text--line-height: 0.9em; /* This will be overridden below for consistency */
-    --special-text--font-weight: 800;
-    --special-text--letter-spacing: -0.02em;
-    --font-families--heading: "Funnel Display", sans-serif;
-    --font-families--body: "Rethink Sans", sans-serif;
-    --_colors---accent--a100: #f6feeb;
-    --_colors---accent--a200: #ecfed8;
-    --_colors---accent--a300: #defdc4;
-    --_colors---accent--a400: #d0fcb5;
-    --_colors---accent--a600: #8cd772;
-    --_colors---accent--a700: #62b44f;
-    --_colors---accent--a800: #3d9132;
-    --_colors---accent--a500: #bbfb9d;
-    --_colors---primary--p200: #e6e6e6;
-    --_colors---primary--p300: #b5b5b5;
-    --_colors---primary--p400: #6c6c6c;
-    --_colors---accent--a900: #23781e;
-    --_colors---neutral--n200: #f1f1f1;
-    --_colors---neutral--n300: #dfdfdf;
-    --_colors---neutral--n800: #444;
-    --_colors---neutral--n900: #212121;
-    --_colors---alerts-success--s100: #cdfdd4;
-    --_colors---alerts-success--s200: #9cfcb4;
-    --_colors---alerts-success--s300: #6af89c;
-    --_colors---alerts-success--s400: #45f293;
-    --_colors---alerts-success--s500: #0bea86;
-    --_colors---alerts-success--s600: #08c985;
-    --_colors---alerts-success--s700: #05a87f;
-    --_colors---alerts-success--s800: #038774;
-    --_colors---alerts-success--s900: #02706a;
-    --_colors---alerts-error--e100: #ffeada;
-    --_colors---alerts-error--e200: #ffd0b6;
-    --_colors---alerts-error--e300: #ffb091;
-    --_colors---alerts-error--e400: #ff9176;
-    --_colors---alerts-error--e500: #ff5f49;
-    --_colors---alerts-error--e600: #db3c35;
-    --_colors---alerts-error--e700: #b7242a;
-    --_colors---alerts-error--e800: #931725;
-    --_colors---alerts-error--e900: #7a0e23;
-    --_colors---alerts-warning--w100: #fffcd9;
-    --_colors---alerts-warning--w200: #fff8b4;
-    --_colors---alerts-warning--w300: #fff38e;
-    --_colors---alerts-warning--w400: #ffee72;
-    --_colors---alerts-warning--w500: #ffe644;
-    --_colors---alerts-warning--w600: #dbc231;
-    --_colors---alerts-warning--w700: #b79f22;
-    --_colors---alerts-warning--w800: #937d15;
-    --_colors---alerts-warning--w900: #7a650d;
-    --font-weights--thin: 100;
-    --font-weights--extra-light: 200;
-    --font-weights--light: 300;
-    --font-weights--normal: 400;
-    --font-weights--medium: 500;
-    --font-weights--semi-bold: 600;
-    --font-weights--black: 900;
-    --_colors---alerts-info--i100: #d2ebfe;
-    --font-sizes--8px: 8px;
-    --font-sizes--10px: 10px;
-    --_colors---alerts-info--i200: #a6d4fe;
-    --font-sizes--12px: 12px;
-    --_colors---alerts-info--i300: #79b8fc;
-    --font-sizes--14px: 14px;
-    --font-sizes--16px: 16px;
-    --font-sizes--18px: 18px;
-    --font-sizes--20px: 20px;
-    --font-sizes--24px: 24px;
-    --font-sizes--28px: 28px;
-    --font-sizes--36px: 36px;
-    --font-sizes--48px: 48px;
-    --font-sizes--64px: 64px;
-    --font-sizes--128px: 128px;
-    --font-sizes--140px: 140px;
-    --line-heights--100: 1em;
-    --line-heights--90: 0.9em; /* This variable will still exist, but overridden locally */
-    --line-heights--124: 1.24em;
-    --line-heights--128: 1.28em;
-    --line-heights--132: 1.32em;
-    --line-heights--136: 1.36em;
-    --line-heights--140: 1.4em;
-    --line-heights--144: 1.44em;
-    --line-heights--150: 1.5em;
-    --letter-spacings--3: -0.03em;
-    --letter-spacings--2: -0.02em;
-    --_colors---alerts-info--i400: #589ffa;
-    --_colors---alerts-info--i500: #2277f7;
-    --_colors---alerts-info--i600: #185cd4;
-    --_colors---alerts-info--i700: #1144b1;
-    --_colors---alerts-info--i800: #0a2f8f;
-    --_colors---alerts-info--i900: #062176;
-    --body-text-2--font-family: "Rethink Sans", sans-serif;
-    --body-text-2--font-weight: 400;
-    --body-text-2--font-size: 14px;
-    --body-text-2--line-height: 1.5em;
-    --body-text-2--letter-spacing: -0.03em;
-    --button-4--font-family: "Rethink Sans", sans-serif;
-    --button-4--font-weight: 500;
-    --button-4--font-size: 12px;
-    --button-4--line-height: 1.2em;
-    --button-4--letter-spacing: -0.02em;
-  }
-  
-  /* Base styles for the entire testimonials section */
+  --_colors---primary--p500: #191919;
+  --heading-1--font-family: "Funnel Display", sans-serif;
+  --heading-1--font-size: 128px;
+  --heading-1--line-height: 1.24em;
+  --heading-1--font-weight: 800;
+  --heading-1--letter-spacing: -0.02em;
+  --heading-2--font-family: "Funnel Display", sans-serif;
+  --heading-2--font-size: 48px; /* Used for the large name at bottom */
+  --heading-2--line-height: 1.24em;
+  --heading-2--font-weight: 700;
+  --heading-2--letter-spacing: -0.02em;
+  --heading-3--font-family: "Funnel Display", sans-serif;
+  --heading-3--font-size: 36px;
+  --heading-3--line-height: 1.28em;
+  --heading-3--font-weight: 700;
+  --heading-3--letter-spacing: -0.02em;
+  --heading-4--font-family: "Funnel Display", sans-serif;
+  --heading-4--font-size: 28px; /* Used for the title at bottom */
+  --heading-4--line-height: 1.32em;
+  --heading-4--font-weight: 700;
+  --heading-4--letter-spacing: -0.02em;
+  --heading-5--font-family: "Funnel Display", sans-serif;
+  --heading-5--font-size: 24px;
+  --heading-5--line-height: 1.36em;
+  --heading-5--font-weight: 600;
+  --heading-5--letter-spacing: -0.02em;
+  --heading-6--font-family: "Funnel Display", sans-serif;
+  --heading-6--font-size: 20px; /* Used for Swipe For More */
+  --heading-6--line-height: 1.4em;
+  --heading-6--font-weight: 500;
+  --heading-6--letter-spacing: -0.02em;
+  --_colors---neutral--n600: #757575;
+  --heading-7--font-family: "Funnel Display", sans-serif;
+  --heading-7--font-size: 18px;
+  --heading-7--line-height: 1.44em;
+  --heading-7--font-weight: 500;
+  --heading-7--letter-spacing: -0.02em;
+  --body-text-1--font-family: "Rethink Sans", sans-serif;
+  --body-text-1--font-size: 16px;
+  --body-text-1--line-height: 1.5em;
+  --body-text-1--font-weight: 400;
+  --body-text-1--letter-spacing: -0.03em;
+  --button-1--font-family: "Rethink Sans", sans-serif;
+  --button-1--font-size: 20px;
+  --button-1--line-height: 1.2em;
+  --button-1--font-weight: 500;
+  --button-1--letter-spacing: -0.02em;
+  --button-2--font-family: "Rethink Sans", sans-serif;
+  --button-2--font-size: 16px;
+  --button-2--line-height: 1.2em;
+  --button-2--font-weight: 500;
+  --button-2--letter-spacing: -0.02em;
+  --button-3--font-family: "Rethink Sans", sans-serif;
+  --button-3--font-size: 14px; /* Used for testimonial buttons */
+  --button-3--line-height: 1.2em;
+  --button-3--font-weight: 500;
+  --button-3--letter-spacing: -0.02em;
+  --font-weights--bold: 700;
+  --font-weights--extra-bold: 800;
+  --_colors---neutral--n100: white;
+  --_colors---neutral--n500: #9e9e9e;
+  --_colors---neutral--n400: #bdbdbd;
+  --_colors---neutral--n700: #616161;
+  --_colors---primary--p100: #f2f2f2;
+  --line-heights--100: 1em;
+  --special-text--font-family: "Funnel Display", sans-serif;
+  --special-text--font-size: 140px; /* For the large 01, 02 etc. */
+  --special-text--line-height: 0.9em; /* This will be overridden below for consistency */
+  --special-text--font-weight: 800;
+  --special-text--letter-spacing: -0.02em;
+  --font-families--heading: "Funnel Display", sans-serif;
+  --font-families--body: "Rethink Sans", sans-serif;
+  --_colors---accent--a100: #f6feeb;
+  --_colors---accent--a200: #ecfed8;
+  --_colors---accent--a300: #defdc4;
+  --_colors---accent--a400: #d0fcb5;
+  --_colors---accent--a600: #8cd772;
+  --_colors---accent--a700: #62b44f;
+  --_colors---accent--a800: #3d9132;
+  --_colors---accent--a500: #bbfb9d;
+  --_colors---primary--p200: #e6e6e6;
+  --_colors---primary--p300: #b5b5b5;
+  --_colors---primary--p400: #6c6c6c;
+  --_colors---accent--a900: #23781e;
+  --_colors---neutral--n200: #f1f1f1;
+  --_colors---neutral--n300: #dfdfdf;
+  --_colors---neutral--n800: #444;
+  --_colors---neutral--n900: #212121;
+  --_colors---alerts-success--s100: #cdfdd4;
+  --_colors---alerts-success--s200: #9cfcb4;
+  --_colors---alerts-success--s300: #6af89c;
+  --_colors---alerts-success--s400: #45f293;
+  --_colors---alerts-success--s500: #0bea86;
+  --_colors---alerts-success--s600: #08c985;
+  --_colors---alerts-success--s700: #05a87f;
+  --_colors---alerts-success--s800: #038774;
+  --_colors---alerts-success--s900: #02706a;
+  --_colors---alerts-error--e100: #ffeada;
+  --_colors---alerts-error--e200: #ffd0b6;
+  --_colors---alerts-error--e300: #ffb091;
+  --_colors---alerts-error--e400: #ff9176;
+  --_colors---alerts-error--e500: #ff5f49;
+  --_colors---alerts-error--e600: #db3c35;
+  --_colors---alerts-error--e700: #b7242a;
+  --_colors---alerts-error--e800: #931725;
+  --_colors---alerts-error--e900: #7a0e23;
+  --_colors---alerts-warning--w100: #fffcd9;
+  --_colors---alerts-warning--w200: #fff8b4;
+  --_colors---alerts-warning--w300: #fff38e;
+  --_colors---alerts-warning--w400: #ffee72;
+  --_colors---alerts-warning--w500: #ffe644;
+  --_colors---alerts-warning--w600: #dbc231;
+  --_colors---alerts-warning--w700: #b79f22;
+  --_colors---alerts-warning--w800: #937d15;
+  --_colors---alerts-warning--w900: #7a650d;
+  --font-weights--thin: 100;
+  --font-weights--extra-light: 200;
+  --font-weights--light: 300;
+  --font-weights--normal: 400;
+  --font-weights--medium: 500;
+  --font-weights--semi-bold: 600;
+  --font-weights--black: 900;
+  --_colors---alerts-info--i100: #d2ebfe;
+  --font-sizes--8px: 8px;
+  --font-sizes--10px: 10px;
+  --_colors---alerts-info--i200: #a6d4fe;
+  --font-sizes--12px: 12px;
+  --_colors---alerts-info--i300: #79b8fc;
+  --font-sizes--14px: 14px;
+  --font-sizes--16px: 16px;
+  --font-sizes--18px: 18px;
+  --font-sizes--20px: 20px;
+  --font-sizes--24px: 24px;
+  --font-sizes--28px: 28px;
+  --font-sizes--36px: 36px;
+  --font-sizes--48px: 48px;
+  --font-sizes--64px: 64px;
+  --font-sizes--128px: 128px;
+  --font-sizes--140px: 140px;
+  --line-heights--100: 1em;
+  --line-heights--90: 0.9em; /* This variable will still exist, but overridden locally */
+  --line-heights--124: 1.24em;
+  --line-heights--128: 1.28em;
+  --line-heights--132: 1.32em;
+  --line-heights--136: 1.36em;
+  --line-heights--140: 1.4em;
+  --line-heights--144: 1.44em;
+  --line-heights--150: 1.5em;
+  --letter-spacings--3: -0.03em;
+  --letter-spacings--2: -0.02em;
+  --_colors---alerts-info--i400: #589ffa;
+  --_colors---alerts-info--i500: #2277f7;
+  --_colors---alerts-info--i600: #185cd4;
+  --_colors---alerts-info--i700: #1144b1;
+  --_colors---alerts-info--i800: #0a2f8f;
+  --_colors---alerts-info--i900: #062176;
+  --body-text-2--font-family: "Rethink Sans", sans-serif;
+  --body-text-2--font-weight: 400;
+  --body-text-2--font-size: 14px;
+  --body-text-2--line-height: 1.5em;
+  --body-text-2--letter-spacing: -0.03em;
+  --button-4--font-family: "Rethink Sans", sans-serif;
+  --button-4--font-weight: 500;
+  --button-4--font-size: 12px;
+  --button-4--line-height: 1.2em;
+  --button-4--letter-spacing: -0.02em;
+}
+
+/* Base styles for the entire testimonials section */
+.section_testimonials {
+  width: 100%;
+  min-height: 100vh; /* Use min-height for mobile to allow content to flow */
+  overflow: hidden; /* Prevent horizontal scroll on mobile */
+  background-color: var(--_colors---primary--p100);
+  position: relative; /* For absolute positioning of mobile list */
+}
+
+/* Content wrapper that gets pinned on desktop */
+.testimonials_content {
+  width: 100%;
+  height: 100vh; /* Desktop height */
+  display: flex;
+  position: sticky; /* Desktop pinning */
+  top: 0;
+  overflow: hidden; /* Hide overflow for horizontal scroll on desktop */
+  background-color: var(--_colors---primary--p100);
+}
+
+/* Left Column (Buttons, Numbers, Name/Title) */
+.testimonials_left {
+  z-index: 1;
+  background-color: var(--_colors---primary--p100);
+  flex-flow: column;
+  justify-content: space-between;
+  width: 42%; /* Desktop width */
+  height: 100vh; /* Desktop height */
+  padding-top: 150px;
+  padding-bottom: 40px;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.testimonials_left.padding-global {
+  padding-left: 80px;
+  padding-right: 40px;
+}
+
+.padding-global { /* General padding class, ensure it's applied correctly */
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.testimonials_top {
+  justify-content: space-between;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding-right: 20px;
+}
+
+/* Left Column - 01 Drew Norman list */
+.testimonials_links {
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
+  flex-flow: column;
+  display: flex;
+  overflow: hidden;
+  height: 250px; /* Fixed height for scrolling buttons */
+  flex-shrink: 0;
+  margin-right: 50px;
+}
+
+.testimonial_button {
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  color: var(--_colors---neutral--n500);
+  align-items: center;
+  display: flex;
+  white-space: nowrap;
+  padding: 4px 0;
+  transition: color 0.3s ease;
+  cursor: pointer; /* Indicate clickable */
+}
+
+.testimonial_button.is-active {
+  color: var(--_colors---primary--p500);
+}
+
+.button-style-b3 {
+  font-family: var(--button-3--font-family);
+  /* Fluid font size: min 14px, max 20px (increased from 18px) */
+  font-size: clamp(14px, 1.3vw + 0.5rem, 20px);
+  line-height: var(--button-3--line-height);
+  font-weight: var(--button-3--font-weight);
+  letter-spacing: var(--button-3--letter-spacing);
+}
+
+/* Middle-Right - Large scrolling numbers */
+.special-text-number-block {
+  position: relative;
+  overflow: hidden; /* Crucial for hiding numbers outside the view */
+  height: 150px; /* Fixed height for scrolling numbers */
+  text-align: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.special-text-number {
+  font-family: var(--special-text--font-family);
+  /* Fluid font size for large numbers: min 80px, max 160px (increased from 140px) */
+  font-size: clamp(80px, 9vw + 2rem, 160px);
+  line-height: 150px; /* IMPORTANT: Make line-height match the height for precise vertical alignment */
+  font-weight: var(--special-text--font-weight);
+  letter-spacing: var(--special-text--letter-spacing);
+  will-change: transform;
+  color: var(--_colors---primary--p500);
+  height: 150px; /* Match block height for vertical alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bottom-Right - Static Name and Title */
+.testimony_current_info {
+  margin-left: auto;
+  text-align: right; /* Align text to the right for desktop */
+  padding-right: 20px; /* Add some padding */
+}
+
+.testimony_current_info .heading-style-h2 {
+  font-family: var(--heading-2--font-family);
+  /* Fluid font size for name: min 36px, max 60px (increased from 48px) */
+  font-size: clamp(36px, 4vw + 1rem, 60px);
+  line-height: var(--heading-2--line-height);
+  font-weight: var(--heading-2--font-weight);
+  letter-spacing: var(--heading-2--letter-spacing);
+  color: var(--_colors---primary--p500);
+  margin-bottom: 10px;
+}
+
+.testimony_current_info .heading-style-h4 {
+  font-family: var(--heading-4--font-family);
+  /* Fluid font size for title: min 20px, max 32px (increased from 28px) */
+  font-size: clamp(20px, 2.5vw + 0.5rem, 32px);
+  line-height: var(--heading-4--line-height);
+  font-weight: var(--heading-4--font-weight);
+  letter-spacing: var(--heading-4--letter-spacing);
+}
+
+.text-color-n500 {
+  color: var(--_colors---neutral--n500);
+}
+
+.testimony_swipe {
+  text-align: center;
+  display: none; /* Hidden by default, shown on mobile */
+  margin-top: 20px;
+  color: var(--_colors---primary--p500);
+}
+
+.heading-style-h6 {
+  font-family: var(--heading-6--font-family);
+  /* Fluid font size for "Swipe For More": min 16px, max 24px (increased from 20px) */
+  font-size: clamp(16px, 2vw + 0.2rem, 24px);
+  line-height: var(--heading-6--line-height);
+  font-weight: var(--heading-6--font-weight);
+  letter-spacing: var(--heading-6--letter-spacing);
+  color: var(--_colors---primary--p500);
+}
+
+/* Right Section (Image Carousel) */
+.testimonials_right {
+  flex: 1; /* Take remaining space */
+  position: relative;
+  overflow: hidden; /* Hide overflowing images for horizontal scroll */
+  display: flex;
+  justify-content: flex-start; /* Align images to the start for horizontal scroll */
+  align-items: center;
+}
+
+.testimonials_image-block {
+  display: flex;
+  width: 100%; /* This will be overridden by GSAP xPercent animation */
+  height: 100%;
+  flex-wrap: nowrap; /* Prevent wrapping on desktop for horizontal scroll */
+}
+
+.testimonial_image_wrapper {
+  flex-shrink: 0; /* Prevent shrinking */
+  width: 100%; /* Each wrapper takes 100% of the parent's width for horizontal slide */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial_image {
+  max-width: 100%;
+  max-height: 60%; /* Adjust size of the person image */
+  object-fit: contain;
+}
+
+/* Mobile-specific Testimonial List (hidden on desktop) */
+.testimonials_mobile_list {
+  display: none; /* Hidden by default, shown on mobile */
+  flex-direction: column;
+  gap: 40px; /* Space between mobile testimonial items */
+  padding: 40px 20px; /* Padding for the mobile list */
+  background-color: var(--_colors---primary--p100);
+}
+
+.mobile_testimonial_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #fff; /* White background for each item */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding-bottom: 20px; /* Padding inside the card */
+}
+
+.mobile_testimonial_image_wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px; /* Fixed height for image section on mobile cards */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile_testimonial_image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px; /* Size of the person's image */
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+  border: 4px solid white; /* White border around profile image */
+}
+
+.mobile_testimonial_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7); /* Dim background image */
+  z-index: 1;
+}
+
+.mobile_testimonial_details {
+  padding: 20px;
+  padding-top: 80px; /* Space for the overlapping image */
+}
+
+.mobile_testimonial_number {
+  font-family: var(--special-text--font-family);
+  /* Fluid for mobile number: min 2.5rem, max 4rem (increased from 3.5rem) */
+  font-size: clamp(2.5rem, 9vw, 4rem);
+  font-weight: 800;
+  color: var(--_colors---primary--p500);
+  margin-bottom: 10px;
+}
+
+.mobile_testimonial_name {
+  font-family: var(--heading-2--font-family);
+  /* Fluid for mobile name: min 1.8rem, max 2.5rem (increased from 2.2rem) */
+  font-size: clamp(1.8rem, 7vw, 2.5rem);
+  font-weight: 700;
+  color: var(--_colors---primary--p500);
+  margin-bottom: 5px;
+}
+
+.mobile_testimonial_title {
+  font-family: var(--heading-4--font-family);
+  /* Fluid for mobile title: min 1.1rem, max 1.5rem (increased from 1.3rem) */
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  color: var(--_colors---neutral--n500);
+}
+
+
+/* --- Responsive Media Queries --- */
+
+/* Mobile devices (up to 1023px) */
+@media (max-width: 1023px) {
   .section_testimonials {
-    width: 100%;
-    min-height: 100vh; /* Use min-height for mobile to allow content to flow */
-    overflow: hidden; /* Prevent horizontal scroll on mobile */
-    background-color: var(--_colors---primary--p100);
-    position: relative; /* For absolute positioning of mobile list */
+    height: auto; /* Allow height to adjust for content */
   }
-  
-  /* Content wrapper that gets pinned on desktop */
+
   .testimonials_content {
-    width: 100%;
-    height: 100vh; /* Desktop height */
-    display: flex;
-    position: sticky; /* Desktop pinning */
-    top: 0;
-    overflow: hidden; /* Hide overflow for horizontal scroll on desktop */
-    background-color: var(--_colors---primary--p100);
+    position: relative; /* Remove sticky/pinning */
+    height: auto; /* Allow height to adjust */
+    flex-direction: column; /* Stack left and right sections vertically */
+    overflow: visible; /* Allow content to flow vertically */
   }
-  
-  /* Left Column (Buttons, Numbers, Name/Title) */
+
   .testimonials_left {
-    z-index: 1;
-    background-color: var(--_colors---primary--p100);
-    flex-flow: column;
-    justify-content: space-between;
+    width: 100%; /* Full width for left section */
+    height: auto; /* Adjust height based on content */
+    padding-top: 40px; /* Adjust padding for mobile */
+    padding-bottom: 20px;
+    text-align: center; /* Center text in left section */
+  }
+
+  .testimonials_left.padding-global {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .testimonials_top {
+    flex-direction: column; /* Stack elements in testimonials_top */
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .testimonials_links,
+  .special-text-number-block {
+    display: none; /* Hide these elements on mobile */
+  }
+
+  .testimony_current_info {
+    margin-left: 0; /* Remove auto margin */
+    text-align: center; /* Center text */
+    padding-right: 0;
+    margin-top: 20px; /* Space from top elements */
+  }
+
+  .testimony_swipe {
+    display: block; /* Show "Swipe For More" on mobile */
+  }
+
+  .testimonials_right {
+    width: 100%; /* Full width for right section */
+    height: auto; /* Adjust height based on content */
+    overflow: visible; /* Allow images to flow vertically */
+    flex-direction: column; /* Stack image wrappers vertically */
+    padding-bottom: 40px; /* Padding below images */
+  }
+
+  .testimonials_image-block {
+    flex-direction: column; /* Stack images vertically */
+    flex-wrap: nowrap; /* Ensure they don't wrap in a row */
+    width: 100%;
+    height: auto;
+  }
+
+  .testimonial_image_wrapper {
+    width: 100%; /* Full width for each image wrapper */
+    height: 300px; /* Fixed height for mobile image wrappers */
+    margin-bottom: 20px; /* Space between images */
+  }
+
+  .testimonial_image_wrapper:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Show the mobile-specific list and hide the main content */
+  .testimonials_content {
+    display: none; /* Hide the main pinned content on mobile */
+  }
+  .testimonials_mobile_list {
+    display: flex; /* Show the mobile-specific list */
+  }
+}
+
+/* Tablet devices (768px to 1023px) - Specific adjustments if needed */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* You can add more specific adjustments for tablets here if the general mobile styles aren't perfect */
+  .testimonials_left.padding-global {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .testimonials_left {
+    padding-top: 80px;
+  }
+  .testimonial_image_wrapper {
+    height: 400px; /* Slightly taller images for tablets */
+  }
+}
+
+/* Desktop and larger (1024px and up) */
+@media (min-width: 1024px) {
+  .section_testimonials {
+    height: 100vh; /* Revert to fixed height for desktop pinning */
+  }
+  .testimonials_content {
+    display: flex; /* Show main pinned content */
+    position: sticky;
+    height: 100vh;
+    flex-direction: row; /* Two-column layout */
+    overflow: hidden; /* For horizontal scroll */
+  }
+
+  .testimonials_left {
     width: 42%; /* Desktop width */
-    height: 100vh; /* Desktop height */
+    height: 100vh;
     padding-top: 150px;
     padding-bottom: 40px;
-    display: flex;
-    position: relative;
-    box-sizing: border-box;
+    text-align: left; /* Align text left for desktop */
   }
-  
+
   .testimonials_left.padding-global {
     padding-left: 80px;
     padding-right: 40px;
   }
-  
-  .padding-global { /* General padding class, ensure it's applied correctly */
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  
+
   .testimonials_top {
-    justify-content: space-between;
-    display: flex;
+    flex-direction: row; /* Row layout for top elements */
     align-items: flex-start;
-    width: 100%;
     padding-right: 20px;
   }
-  
-  /* Left Column - 01 Drew Norman list */
-  .testimonials_links {
-    grid-column-gap: 4px;
-    grid-row-gap: 4px;
-    flex-flow: column;
-    display: flex;
-    overflow: hidden;
-    height: 250px; /* Fixed height for scrolling buttons */
-    flex-shrink: 0;
-    margin-right: 50px;
-  }
-  
-  .testimonial_button {
-    grid-column-gap: 16px;
-    grid-row-gap: 16px;
-    color: var(--_colors---neutral--n500);
-    align-items: center;
-    display: flex;
-    white-space: nowrap;
-    padding: 4px 0;
-    transition: color 0.3s ease;
-    cursor: pointer; /* Indicate clickable */
-  }
-  
-  .testimonial_button.is-active {
-    color: var(--_colors---primary--p500);
-  }
-  
-  .button-style-b3 {
-    font-family: var(--button-3--font-family);
-    font-size: var(--button-3--font-size); /* Use clamp for responsiveness */
-    line-height: var(--button-3--line-height);
-    font-weight: var(--button-3--font-weight);
-    letter-spacing: var(--button-3--letter-spacing);
-  }
-  
-  /* Middle-Right - Large scrolling numbers */
+
+  .testimonials_links,
   .special-text-number-block {
-    position: relative;
-    overflow: hidden; /* Crucial for hiding numbers outside the view */
-    height: 150px; /* Fixed height for scrolling numbers */
-    text-align: center;
-    margin-left: auto;
-    flex-shrink: 0;
+    display: flex; /* Show these elements on desktop */
   }
-  
-  .special-text-number {
-    font-family: var(--special-text--font-family);
-    font-size: var(--special-text--font-size); /* Use clamp for responsiveness */
-    line-height: 150px; /* IMPORTANT: Make line-height match the height for precise vertical alignment */
-    font-weight: var(--special-text--font-weight);
-    letter-spacing: var(--special-text--letter-spacing);
-    will-change: transform;
-    color: var(--_colors---primary--p500);
-    height: 150px; /* Match block height for vertical alignment */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Bottom-Right - Static Name and Title */
+
   .testimony_current_info {
     margin-left: auto;
-    text-align: right; /* Align text to the right for desktop */
-    padding-right: 20px; /* Add some padding */
+    text-align: right;
+    padding-right: 20px;
+    margin-top: 0;
   }
-  
-  .testimony_current_info .heading-style-h2 {
-    font-family: var(--heading-2--font-family);
-    font-size: var(--heading-2--font-size); /* Use clamp for responsiveness */
-    line-height: var(--heading-2--line-height);
-    font-weight: var(--heading-2--font-weight);
-    letter-spacing: var(--heading-2--letter-spacing);
-    color: var(--_colors---primary--p500);
-    margin-bottom: 10px;
-  }
-  
-  .testimony_current_info .heading-style-h4 {
-    font-family: var(--heading-4--font-family);
-    font-size: var(--heading-4--font-size); /* Use clamp for responsiveness */
-    line-height: var(--heading-4--line-height);
-    font-weight: var(--heading-4--font-weight);
-    letter-spacing: var(--heading-4--letter-spacing);
-  }
-  
-  .text-color-n500 {
-    color: var(--_colors---neutral--n500);
-  }
-  
+
   .testimony_swipe {
-    text-align: center;
-    display: none; /* Hidden by default, shown on mobile */
-    margin-top: 20px;
-    color: var(--_colors---primary--p500);
+    display: none; /* Hide "Swipe For More" on desktop */
   }
-  
-  .heading-style-h6 {
-    font-family: var(--heading-6--font-family);
-    font-size: var(--heading-6--font-size); /* Use clamp for responsiveness */
-    line-height: var(--heading-6--line-height);
-    font-weight: var(--heading-6--font-weight);
-    letter-spacing: var(--heading-6--letter-spacing);
-    color: var(--_colors---primary--p500);
-  }
-  
-  /* Right Section (Image Carousel) */
+
   .testimonials_right {
-    flex: 1; /* Take remaining space */
-    position: relative;
-    overflow: hidden; /* Hide overflowing images for horizontal scroll */
-    display: flex;
-    justify-content: flex-start; /* Align images to the start for horizontal scroll */
-    align-items: center;
+    width: 58%; /* Remaining width for right section */
+    height: 100vh;
+    overflow: hidden; /* Hide overflow for horizontal scroll */
+    flex-direction: row; /* Images in a row for horizontal scroll */
+    padding-bottom: 0;
   }
-  
+
   .testimonials_image-block {
-    display: flex;
-    width: 100%; /* This will be overridden by GSAP xPercent animation */
+    flex-direction: row; /* Images in a row */
+    flex-wrap: nowrap; /* Prevent wrapping */
     height: 100%;
-    flex-wrap: nowrap; /* Prevent wrapping on desktop for horizontal scroll */
+    /* Width will be set by GSAP for horizontal scrolling */
   }
-  
+
   .testimonial_image_wrapper {
-    flex-shrink: 0; /* Prevent shrinking */
-    width: 100%; /* Each wrapper takes 100% of the parent's width for horizontal slide */
+    width: 100vw; /* Each wrapper takes 100vw for horizontal slide */
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 0;
   }
-  
-  .testimonial_image {
-    max-width: 100%;
-    max-height: 60%; /* Adjust size of the person image */
-    object-fit: contain;
-  }
-  
-  /* Mobile-specific Testimonial List (hidden on desktop) */
+
   .testimonials_mobile_list {
-    display: none; /* Hidden by default, shown on mobile */
-    flex-direction: column;
-    gap: 40px; /* Space between mobile testimonial items */
-    padding: 40px 20px; /* Padding for the mobile list */
-    background-color: var(--_colors---primary--p100);
+    display: none; /* Hide mobile-specific list on desktop */
   }
-  
-  .mobile_testimonial_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #fff; /* White background for each item */
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    padding-bottom: 20px; /* Padding inside the card */
+}
+
+/* Extra Large devices (1400px and up) - Optional */
+@media (min-width: 1400px) {
+  .testimonials_left.padding-global {
+    padding-left: 120px; /* Increased padding for very large screens */
+    padding-right: 60px;
   }
-  
-  .mobile_testimonial_image_wrapper {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Fixed height for image section on mobile cards */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  .testimonials_left {
+    padding-top: 200px; /* More top padding */
+    padding-bottom: 60px;
   }
-  
-  .mobile_testimonial_image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px; /* Size of the person's image */
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    z-index: 2;
-    border: 4px solid white; /* White border around profile image */
+
+  .testimonials_links {
+    height: 350px; /* Allow more height for buttons */
+    margin-right: 80px; /* More space for the buttons */
   }
-  
-  .mobile_testimonial_bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.7); /* Dim background image */
-    z-index: 1;
+
+  .button-style-b3 {
+    font-size: clamp(18px, 1.2vw, 22px); /* Larger min/max font size */
   }
-  
-  .mobile_testimonial_details {
-    padding: 20px;
-    padding-top: 80px; /* Space for the overlapping image */
+
+  .special-text-number-block {
+    height: 200px; /* Taller block for numbers */
   }
-  
-  .mobile_testimonial_number {
-    font-family: var(--special-text--font-family);
-    font-size: 2.5rem; /* Smaller number for mobile cards */
-    font-weight: 800;
-    color: var(--_colors---primary--p500);
-    margin-bottom: 10px;
+
+  .special-text-number {
+    font-size: clamp(120px, 7vw, 200px); /* Even larger max font size for numbers */
+    line-height: 200px; /* Match new height */
   }
-  
-  .mobile_testimonial_name {
-    font-family: var(--heading-2--font-family);
-    font-size: 1.8rem; /* Smaller name for mobile cards */
-    font-weight: 700;
-    color: var(--_colors---primary--p500);
-    margin-bottom: 5px;
+
+  .testimony_current_info .heading-style-h2 {
+    font-size: clamp(54px, 3.5vw, 72px); /* Even larger max font for current name */
   }
-  
-  .mobile_testimonial_title {
-    font-family: var(--heading-4--font-family);
-    font-size: 1.1rem; /* Smaller title for mobile cards */
-    color: var(--_colors---neutral--n500);
+
+  .testimony_current_info .heading-style-h4 {
+    font-size: clamp(28px, 2vw, 40px); /* Even larger max font for current title */
   }
-  
-  
-  /* --- Responsive Media Queries --- */
-  
-  /* Mobile devices (up to 1023px) */
-  @media (max-width: 1023px) {
-    .section_testimonials {
-      height: auto; /* Allow height to adjust for content */
-    }
-  
-    .testimonials_content {
-      position: relative; /* Remove sticky/pinning */
-      height: auto; /* Allow height to adjust */
-      flex-direction: column; /* Stack left and right sections vertically */
-      overflow: visible; /* Allow content to flow vertically */
-    }
-  
-    .testimonials_left {
-      width: 100%; /* Full width for left section */
-      height: auto; /* Adjust height based on content */
-      padding-top: 40px; /* Adjust padding for mobile */
-      padding-bottom: 20px;
-      text-align: center; /* Center text in left section */
-    }
-  
+}
+
+/* Ultra-Wide Desktop devices (1920px and up) - NEW ADDITION for really big screens */
+@media (min-width: 1920px) {
     .testimonials_left.padding-global {
-      padding-left: 20px;
-      padding-right: 20px;
+        padding-left: 150px; /* Even more padding */
+        padding-right: 80px;
     }
-  
-    .testimonials_top {
-      flex-direction: column; /* Stack elements in testimonials_top */
-      align-items: center;
-      padding-right: 0;
+
+    .testimonials_left {
+        padding-top: 250px;
+        padding-bottom: 80px;
     }
-  
-    .testimonials_links,
+
+    .testimonials_links {
+        height: 400px; /* Even more height for buttons */
+        margin-right: 100px;
+    }
+
+    .button-style-b3 {
+        font-size: clamp(20px, 1.1vw, 24px); /* Max to 24px */
+    }
+
     .special-text-number-block {
-      display: none; /* Hide these elements on mobile */
+        height: 150px; /* Even taller block for numbers */
     }
-  
-    .testimony_current_info {
-      margin-left: 0; /* Remove auto margin */
-      text-align: center; /* Center text */
-      padding-right: 0;
-      margin-top: 20px; /* Space from top elements */
+
+    .special-text-number {
+        font-size: clamp(150px, 6vw, 250px); /* Max to 250px */
+        line-height: 250px; /* Match new height */
     }
-  
-    .testimony_swipe {
-      display: block; /* Show "Swipe For More" on mobile */
+
+    .testimony_current_info .heading-style-h2 {
+        font-size: clamp(60px, 3vw, 80px); /* Max to 80px */
     }
-  
-    .testimonials_right {
-      width: 100%; /* Full width for right section */
-      height: auto; /* Adjust height based on content */
-      overflow: visible; /* Allow images to flow vertically */
-      flex-direction: column; /* Stack image wrappers vertically */
-      padding-bottom: 40px; /* Padding below images */
+
+    .testimony_current_info .heading-style-h4 {
+        font-size: clamp(32px, 1.8vw, 48px); /* Max to 48px */
     }
-  
-    .testimonials_image-block {
-      flex-direction: column; /* Stack images vertically */
-      flex-wrap: nowrap; /* Ensure they don't wrap in a row */
-      width: 100%;
-      height: auto;
-    }
-  
-    .testimonial_image_wrapper {
-      width: 100%; /* Full width for each image wrapper */
-      height: 300px; /* Fixed height for mobile image wrappers */
-      margin-bottom: 20px; /* Space between images */
-    }
-  
-    .testimonial_image_wrapper:last-child {
-      margin-bottom: 0;
-    }
-  
-    /* Show the mobile-specific list and hide the main content */
-    .testimonials_content {
-      display: none; /* Hide the main pinned content on mobile */
-    }
-    .testimonials_mobile_list {
-      display: flex; /* Show the mobile-specific list */
-    }
-  }
-  
-  /* Tablet devices (768px to 1023px) - Specific adjustments if needed */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    /* You can add more specific adjustments for tablets here if the general mobile styles aren't perfect */
-    .testimonials_left.padding-global {
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-    .testimonials_left {
-      padding-top: 80px;
-    }
-    .testimonial_image_wrapper {
-      height: 400px; /* Slightly taller images for tablets */
-    }
-  }
-  
-  /* Desktop and larger (1024px and up) */
-  @media (min-width: 1024px) {
-    .section_testimonials {
-      height: 100vh; /* Revert to fixed height for desktop pinning */
-    }
-    .testimonials_content {
-      display: flex; /* Show main pinned content */
-      position: sticky;
-      height: 100vh;
-      flex-direction: row; /* Two-column layout */
-      overflow: hidden; /* For horizontal scroll */
-    }
-  
-    .testimonials_left {
-      width: 42%; /* Desktop width */
-      height: 100vh;
-      padding-top: 150px;
-      padding-bottom: 40px;
-      text-align: left; /* Align text left for desktop */
-    }
-  
-    .testimonials_left.padding-global {
-      padding-left: 80px;
-      padding-right: 40px;
-    }
-  
-    .testimonials_top {
-      flex-direction: row; /* Row layout for top elements */
-      align-items: flex-start;
-      padding-right: 20px;
-    }
-  
-    .testimonials_links,
-    .special-text-number-block {
-      display: flex; /* Show these elements on desktop */
-    }
-  
-    .testimony_current_info {
-      margin-left: auto;
-      text-align: right;
-      padding-right: 20px;
-      margin-top: 0;
-    }
-  
-    .testimony_swipe {
-      display: none; /* Hide "Swipe For More" on desktop */
-    }
-  
-    .testimonials_right {
-      width: 58%; /* Remaining width for right section */
-      height: 100vh;
-      overflow: hidden; /* Hide overflow for horizontal scroll */
-      flex-direction: row; /* Images in a row for horizontal scroll */
-      padding-bottom: 0;
-    }
-  
-    .testimonials_image-block {
-      flex-direction: row; /* Images in a row */
-      flex-wrap: nowrap; /* Prevent wrapping */
-      height: 100%;
-      /* Width will be set by GSAP for horizontal scrolling */
-    }
-  
-    .testimonial_image_wrapper {
-      width: 100vw; /* Each wrapper takes 100vw for horizontal slide */
-      height: 100%;
-      margin-bottom: 0;
-    }
-  
-    .testimonials_mobile_list {
-      display: none; /* Hide mobile-specific list on desktop */
-    }
-  }
-  
+}

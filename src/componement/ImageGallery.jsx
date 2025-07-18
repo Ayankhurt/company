@@ -62,7 +62,7 @@ const ImageGallery = () => {
           end: `+=${scrollDistanceForPin}`, // The total scroll length for the pin
           pin: true,
           pinSpacing: true, // Adds space for the pinned element
-          scrub: 1, // Smooth scrub
+          scrub: 0.05, // **DECREASED THIS VALUE FOR FASTER SCROLLING**
           anticipatePin: 1, // Helps with smoother pinning
           invalidateOnRefresh: true, // Recalculate on refresh/resize
           // markers: true // Uncomment for debugging ScrollTrigger
