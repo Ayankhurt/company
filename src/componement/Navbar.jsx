@@ -1,124 +1,54 @@
-import React, { useState } from 'react';
-import "./navbar.css"; // Ensure this path is correct
+import React, { useState } from "react";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // State to manage burger menu visibility
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleScroll = (e, id) => {
-    e.preventDefault(); // Prevent default anchor behavior
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the element
-      setIsOpen(false); // Close the menu after clicking a link
-    }
-  };
+  // Close menu on link click (mobile UX)
+  const handleLinkClick = () => setMenuOpen(false);
 
   return (
-    <div className="navbar-container">
-      <div className="navbar-inner-container">
-        {/* Brand Logo */}
-        <div className="navbar-brand">
-          <span className="navbar-brand-devano">
-            <a href="#" className="navbar-brand-devano">DEVANO</a>
-          </span>
-          <span className="navbar-brand-uk">
-            <a href="#" className="navbar-brand-uk">UK</a>
-          </span>
+    <nav className="custom-navbar">
+      <div className="navbar-container">
+        <div className="navbar-left desktop-only">
+          <a href="#projects" className="nav-link">Projects</a>
+          <a href="#services" className="nav-link">Services</a>
+          <a href="#testimonials" className="nav-link">Testimonials</a>
+          <a href="#contact" className="nav-link">Contact</a>
         </div>
-
-        {/* Burger Menu Button for Mobile */}
-        <div className="navbar-toggle-button-wrapper">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="navbar-toggle-button"
-            aria-label="Toggle navigation menu"
-          >
-            <svg
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              )}
-            </svg>
-          </button>
+        <div className="navbar-center">
+          <div className="logo-main">
+            <span className="logo-bold">Prompt</span>
+            <span className="logo-thin">Crafted</span>
+          </div>
         </div>
-
-        {/* Navigation Links - Hidden on mobile by default, shown when burger menu is open */}
-        <nav
-          className={`navbar-nav ${isOpen ? 'is-open' : ''}`}
+        <div className="navbar-right desktop-only">
+          <a href="#contact" className="contact-btn">
+            Contact <span className="arrow">►</span>
+          </a>
+        </div>
+        {/* Hamburger icon for mobile */}
+        <button
+          className={`hamburger-btn mobile-only${menuOpen ? " open" : ""}`}
+          aria-label="Toggle menu"
+          onClick={() => setMenuOpen((prev) => !prev)}
         >
-          <ul className="navbar-nav-list">
-            <li>
-              <a
-                href="#project"
-                onClick={(e) => handleScroll(e, 'project')}
-                className="navbar-nav-list-link"
-              >
-                Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#services"
-                onClick={(e) => handleScroll(e, 'services')}
-                className="navbar-nav-list-link"
-              >
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="#testimonials"
-                onClick={(e) => handleScroll(e, 'testimonials')}
-                className="navbar-nav-list-link"
-              >
-                Testimonials
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                onClick={(e) => handleScroll(e, 'contact')}
-                className="navbar-nav-list-link"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        {/* Contact Button - Hidden on mobile when menu is open, shown on larger screens */}
-        <div className="navbar-contact-button-wrapper">
-          <a
-            href="#contact"
-            onClick={(e) => handleScroll(e, 'contact')}
-            className="navbar-contact-button"
-          >
-            Contact
-            <img
-              loading="lazy"
-              src="https://cdn.prod.website-files.com/6822faf7b267d2a617501351/6822faf7b267d2a61750136f_Polygon%203.svg"
-              alt=""
-            />
+          <span className="hamburger-bar"></span>
+          <span className="hamburger-bar"></span>
+          <span className="hamburger-bar"></span>
+        </button>
+        {/* Mobile menu */}
+        <div className={`mobile-menu mobile-only${menuOpen ? " show" : ""}`}>
+          <a href="#projects" className="nav-link" onClick={handleLinkClick}>Projects</a>
+          <a href="#services" className="nav-link" onClick={handleLinkClick}>Services</a>
+          <a href="#testimonials" className="nav-link" onClick={handleLinkClick}>Testimonials</a>
+          <a href="#contact" className="nav-link" onClick={handleLinkClick}>Contact</a>
+          <a href="#contact" className="contact-btn" onClick={handleLinkClick}>
+            Contact <span className="arrow">►</span>
           </a>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

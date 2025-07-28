@@ -6,6 +6,7 @@ import ServiceItem from "./ServiceItem";
 import Testimonials from "./Testimonials";
 import Contact from "./contact";
 import Footer from "./footer";
+import Navbar from "./Navbar";
 
 const Main = () => {
   useEffect(() => {
@@ -57,6 +58,7 @@ const Main = () => {
   return (
     <div className="main">
       <section className="section-hero min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'url("logo.jpg")' }}>
+        <Navbar />
         <div className="container mx-auto px-4">
           <div className="hero-content flex flex-col items-center text-center lg:items-start lg:text-left">
             <div className="hero-meta max-w-lg lg:self-end mb-8 lg:mb-0 lg:ml-auto">

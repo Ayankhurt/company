@@ -1,210 +1,250 @@
-/* --- Navbar Specific Styles --- */
+.custom-navbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 0 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  height: 120px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(242,242,242,0.3);
+  width: 100%;
+}
 
-/* Base styles for the Navbar container */
 .navbar-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    width: 100%;
-    background-color: #000000; /* bg-black */
-    color: #ffffff; /* text-white */
-    padding: 1rem; /* py-4, px-4 */
-    box-sizing: border-box; /* Ensure padding is included in width/height */
-    height: var(--navbar-height, 80px); /* Define a CSS variable for height */
-    display: flex; /* Ensure flex for inner container centering */
-    align-items: center; /* Center items vertically */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 1200px) {
+  .navbar-container {
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
   }
-  
-  /* Inner container for alignment */
-  .navbar-inner-container {
-    max-width: 1360px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* Brand Logo Styling */
-  .navbar-brand {
-    display: flex;
+}
+
+.navbar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.nav-link {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #181818;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  padding: 2px 0;
+  transition: none;
+}
+.nav-link:hover {
+  text-decoration: underline;
+  color: #181818;
+  font-weight: 800;
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin-top: 0;
+}
+.logo-main {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: #181818;
+}
+.logo-bold {
+  font-weight: 900;
+  display: block;
+  font-size: 3.5rem;
+}
+.logo-thin {
+  font-weight: 400;
+  font-size: 1.7rem;
+  display: block;
+  margin-top: -8px;
+  letter-spacing: 0.5px;
+}
+
+.navbar-right {
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+.contact-btn {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #181818;
+  text-decoration: underline;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  transition: none;
+}
+.contact-btn:hover {
+  text-decoration: underline;
+  color: #181818;
+  font-weight: 800;
+}
+.arrow {
+  font-size: 1.3rem;
+  margin-left: 4px;
+  font-weight: 900;
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1200;
+  margin-left: auto;
+}
+.hamburger-bar {
+  width: 28px;
+  height: 3px;
+  background: #181818;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(.4,2,.6,1);
+}
+.hamburger-btn.open .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.open .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.98);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.mobile-menu.show {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu .nav-link, .mobile-menu .contact-btn {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+.mobile-menu .contact-btn {
+  font-size: 1.5rem;
+  margin-top: 12px;
+}
+
+.desktop-only {
+  display: flex;
+}
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .custom-navbar {
     flex-direction: column;
     align-items: center;
-    flex-shrink: 0;
+    height: auto;
+    padding: 18px 8px 0 8px;
+    min-height: 80px;
   }
-  
-  /* Default (mobile) font sizes for brand text */
-  .navbar-brand-devano {
-    font-size: 1.875rem; /* Base size, approx. 30px */
-    font-weight: 800; /* font-extrabold */
-    letter-spacing: 0.025em; /* tracking-wide */
-    color: #ffffff;
-    text-decoration: none;
+  .navbar-left {
+    flex-direction: row;
+    gap: 0;
+    margin-top: 0;
+    margin-bottom: 8px;
   }
-  
-  .navbar-brand-uk {
-    font-size: 1.25rem; /* Base size, approx. 20px */
-    font-weight: 700; /* font-bold */
-    letter-spacing: 0.025em; /* tracking-wide */
-    margin-top: -5px; /* mt-[-5px] */
-    color: #ffffff;
-    text-decoration: none;
+  .navbar-center {
+    position: static;
+    transform: none;
+    margin: 8px 0;
   }
-  
-  /* Burger Menu Button Wrapper */
-  .navbar-toggle-button-wrapper {
-    display: block; /* Always block for the wrapper */
+  .navbar-right {
+    margin-top: 0;
   }
-  
-  /* Burger Menu Button for Mobile */
-  .navbar-toggle-button {
-    color: #ffffff;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
+  .desktop-only {
+    display: none !important;
   }
-  
-  .navbar-toggle-button svg {
-    width: 2rem;
-    height: 2rem;
+  .mobile-only {
+    display: flex !important;
   }
-  
-  /* Navigation Links Container */
-  .navbar-nav {
-    display: none; /* hidden by default */
+  .hamburger-btn {
+    display: flex;
     position: absolute;
-    top: var(--navbar-height, 80px); /* Position below the navbar */
-    left: 0;
-    width: 100%;
-    background-color: #000000;
-    padding: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease-in-out;
+    right: 24px;
+    top: 32px;
   }
-  
-  .navbar-nav.is-open {
-    display: block; /* Show when menu is open */
+}
+
+@media (max-width: 600px) {
+  .custom-navbar {
+    padding: 10px 2vw 0 2vw;
+    min-height: 60px;
   }
-  
-  /* Navigation List */
-  .navbar-nav-list {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+  .logo-main {
+    font-size: 2rem;
   }
-  
-  .navbar-nav-list li {
-    margin-bottom: 1rem;
+  .logo-bold {
+    font-size: 2rem;
   }
-  
-  /* Navigation Links */
-  .navbar-nav-list-link {
-    display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: #ffffff;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
+  .logo-thin {
+    font-size: 1.1rem;
   }
-  
-  .navbar-nav-list-link:hover {
-    background-color: #4a5568;
+  .nav-link, .contact-btn {
+    font-size: 1.1rem;
   }
-  
-  /* Contact Button Wrapper */
-  .navbar-contact-button-wrapper {
-    display: none; /* hidden by default, shown via media query */
+  .hamburger-btn {
+    right: 10px;
+    top: 10px;
   }
-  
-  /* Contact Button */
-  .navbar-contact-button {
-    display: inline-flex; /* Use inline-flex for button content */
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 9999px;
-    font-weight: 600;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
+  .mobile-menu .nav-link, .mobile-menu .contact-btn {
+    font-size: 1.2rem;
   }
-  
-  .navbar-contact-button:hover {
-    background-color: #edf2f7;
-  }
-  
-  .navbar-contact-button img {
-    width: 1rem;
-    height: 1rem;
-    margin-left: 0.5rem;
-  }
-  
-  /* Responsive Media Queries for Navbar Brand Font Sizes */
-  
-  /* Small screens (sm: breakpoint - 640px and up) */
-  @media (min-width: 640px) {
-    .navbar-container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-    .navbar-brand-devano {
-      font-size: 2.25rem; /* Larger for sm screens, approx. 36px */
-    }
-    .navbar-brand-uk {
-      font-size: 1.5rem; /* Larger for sm screens, approx. 24px */
-    }
-  }
-  
-  /* Large screens (lg: breakpoint - 1024px and up) */
-  @media (min-width: 1024px) {
-    .navbar-container {
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-    }
-  
-    .navbar-brand-devano {
-      font-size: 2.5rem; /* Even larger for lg screens, approx. 40px */
-    }
-    .navbar-brand-uk {
-      font-size: 1.75rem; /* Even larger for lg screens, approx. 28px */
-    }
-  
-    .navbar-toggle-button-wrapper {
-      display: none; /* Hide burger menu on larger screens */
-    }
-  
-    .navbar-nav {
-      display: flex; /* Show nav links on larger screens */
-      position: static;
-      top: auto;
-      left: auto;
-      width: auto;
-      background-color: transparent;
-      padding: 0;
-      box-shadow: none;
-    }
-  
-    .navbar-nav-list {
-      flex-direction: row;
-      text-align: left;
-    }
-  
-    .navbar-nav-list li {
-      margin-bottom: 0;
-      margin-left: 2rem;
-    }
-  
-    .navbar-contact-button-wrapper {
-      display: block; /* Show contact button on larger screens */
-    }
-  }
+}
