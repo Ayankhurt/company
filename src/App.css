@@ -10,7 +10,7 @@
 
 :root {
   /* Define Navbar height as a CSS variable for consistent spacing */
-  --navbar-height: 80px; /* Approximate height of the fixed navbar */
+  --navbar-height: 120px; /* Updated to match navbar height */
 
   /* Keeping original CSS variables for font sizing and weights if they are used elsewhere */
   --_colors---primary--p500: #191919;
@@ -39,6 +39,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling for the entire page */
+}
+
 body {
   background-color: #fff;
   min-height: 100vh;
@@ -55,12 +59,12 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-top: var(--navbar-height); /* Add padding to push content below navbar */
 }
 
 /* Hero Section */
 .section-hero {
-  /* Use the CSS variable for padding-top to push content below the fixed navbar */
-  padding-top: var(--navbar-height);
+  /* Remove padding-top since main already has it */
   padding-bottom: 50px;
   display: flex;
   align-items: center;
@@ -68,41 +72,46 @@ body {
   background-size: cover;
   background-position: center;
   color: black;
+  min-height: calc(100vh - var(--navbar-height)); /* Subtract navbar height */
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
-  margin-top: 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .hero-meta {
-  text-align: right;
-  align-self: flex-end;
-  max-width: 454px;
+  text-align: center;
+  max-width: 600px;
   margin-bottom: 2rem;
-  color: #212121; /* Ensure hero meta text color is defined */
+  color: #212121;
+  order: 1;
 }
 
-.hero-meta .text-xl { /* Specific rule for the descriptive text */
-  font-size: 1.25rem; /* 20px */
+.hero-meta .text-xl {
+  font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.6;
-  color: #616161; /* Adjust if needed */
+  color: #616161;
 }
-@media (min-width: 640px) { /* sm breakpoint */
-  .hero-meta .sm\:text-2xl {
-    font-size: 1.5rem; /* 24px */
-  }
+
+.hero-main {
+  width: 100%;
+  order: 2;
 }
 
 .heading-hero-block {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  justify-content: center;
 }
 
 /* Custom classes for hero main text (replace Tailwind-like classes) */
@@ -112,28 +121,8 @@ body {
   font-weight: var(--heading-1--font-weight);
   line-height: var(--heading-1--line-height);
   letter-spacing: var(--heading-1--letter-spacing);
-  font-size: 1.75rem; /* Default for mobile, roughly 48px */
-}
-
-/* Small screens (sm: 640px and up) */
-@media (min-width: 640px) {
-  .main-text {
-    font-size: 5rem; /* ~80px */
-  }
-}
-
-/* Medium screens (md: 768px and up, if you want another step) */
-@media (min-width: 768px) {
-  .main-text {
-    font-size: 6.5rem; /* ~104px */
-  }
-}
-
-/* Large screens (lg: 1024px and up) */
-@media (min-width: 1024px) {
-  .main-text {
-    font-size: 8rem; /* ~128px, same as --heading-1--font-size */
-  }
+  font-size: clamp(2.5rem, 8vw, 8rem);
+  text-align: center;
 }
 
 /* Hero Cursor styling */
@@ -141,27 +130,8 @@ body {
   font-family: var(--font-families--heading);
   font-weight: var(--heading-1--font-weight);
   line-height: var(--heading-1--line-height);
-  font-size: 3rem; /* Default for mobile, roughly 48px */
-  color: black; /* Ensure cursor is visible */
-}
-
-/* Responsive adjustments for Hero cursor */
-@media (min-width: 640px) { /* sm breakpoint */
-  #hero-cursor {
-    font-size: 5rem; /* ~80px */
-  }
-}
-
-@media (min-width: 768px) { /* md breakpoint */
-  #hero-cursor {
-    font-size: 6.5rem; /* ~104px */
-  }
-}
-
-@media (min-width: 1024px) { /* lg breakpoint */
-  #hero-cursor {
-    font-size: 8rem; /* ~128px */
-  }
+  font-size: clamp(2.5rem, 8vw, 8rem);
+  color: black;
 }
 
 /* Typewrite animation */
@@ -184,14 +154,102 @@ body {
   max-width: 1360px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem; /* Default padding for small screens */
-  padding-right: 1rem; /* Default padding for small screens */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Section IDs for smooth scrolling */
+#project, #services, #testimonials, #contact {
+  scroll-margin-top: var(--navbar-height); /* Ensure sections scroll to correct position below navbar */
 }
 
 /* Responsive adjustments for general layout */
-@media (min-width: 1024px) { /* lg breakpoint */
+@media (min-width: 1024px) {
   .container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+  
+  .hero-content {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 2rem;
+  }
+  
+  .hero-meta {
+    order: 2;
+    text-align: right;
+    align-self: flex-end;
+    margin-bottom: 0;
+    max-width: 454px;
+  }
+  
+  .hero-main {
+    order: 1;
+  }
+  
+  .heading-hero-block {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .main-text {
+    text-align: left;
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+  .section-hero {
+    padding-bottom: 30px;
+    min-height: calc(90vh - var(--navbar-height));
+  }
+  
+  .hero-content {
+    padding: 0 15px;
+  }
+  
+  .hero-meta {
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-meta .text-xl {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section-hero {
+    padding-bottom: 40px;
+  }
+  
+  .hero-content {
+    padding: 0 30px;
+  }
+  
+  .hero-meta {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Adjust navbar height for different screen sizes */
+@media (max-width: 991px) {
+  :root {
+    --navbar-height: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --navbar-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: 50px;
   }
 }

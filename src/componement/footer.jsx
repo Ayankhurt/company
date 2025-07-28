@@ -171,7 +171,7 @@ const Footer = () => {
                                 </div>
                                 <div ref={footerMetaRef} className="footer_meta">
                                     <div className="heading-style-h7 text-color-n700">
-                                        Whether you’re building from scratch or improving what’s already there, I’m here to bring clarity, creativity, and results.
+                                        Whether you're building from scratch or improving what's already there, I'm here to bring clarity, creativity, and results.
                                     </div>
                                 </div>
                             </div>
@@ -229,16 +229,6 @@ const Footer = () => {
                                     <div className="button">
                                         <div className="button_content-footer">
                                             <div>Services</div>
-                                        </div>
-                                        <svg width="2" height="2" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="button_line">
-                                            <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor" strokeWidth="2"></line>
-                                        </svg>
-                                    </div>
-                                </a>
-                                <a href="#" className="button-style-b1 w-inline-block">
-                                    <div className="button">
-                                        <div className="button_content-footer">
-                                            <div>Contact</div>
                                         </div>
                                         <svg width="2" height="2" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="button_line">
                                             <line x1="0" y1="1" x2="100%" y2="1" stroke="currentColor" strokeWidth="2"></line>
